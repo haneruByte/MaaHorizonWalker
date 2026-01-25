@@ -1,0 +1,221 @@
+{
+  "$__mpe_config_进入游戏": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": -1953,
+        "y": -98,
+        "zoom": 1
+      },
+      "filename": "进入游戏",
+      "version": "v0.14.2"
+    }
+  },
+  "enter_startGame": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击屏幕继续"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "rate_limit": 3000,
+    "post_wait_freezes": {
+      "time": 5000,
+      "threshold": 0.99
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 2489,
+        "y": 445
+      }
+    },
+    "next": [
+      "enter_checkNotice"
+    ]
+  },
+  "enter_noticeClose": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "close.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "rate_limit": 1000,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 3164,
+        "y": 452
+      }
+    },
+    "next": [
+      "enter_getAll"
+    ],
+    "on_error": [
+      {
+        "name": "enter_end",
+        "jump_back": true
+      }
+    ]
+  },
+  "enter_getAll": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "一键领取"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "rate_limit": 1000,
+    "post_wait_freezes": {
+      "time": 5000,
+      "threshold": 0.99
+    },
+    "timeout": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 3467,
+        "y": 444
+      }
+    },
+    "next": [
+      "enter_clickToContinue"
+    ]
+  },
+  "enter_clickToContinue": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击屏幕继续"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "rate_limit": 1000,
+    "post_wait_freezes": {
+      "time": 5000,
+      "threshold": 0.99
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 3807,
+        "y": 427
+      }
+    },
+    "next": [
+      "enter_close"
+    ]
+  },
+  "enter_close": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          802,
+          180,
+          8,
+          11
+        ]
+      }
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 4105,
+        "y": 413
+      }
+    },
+    "next": [
+      "enter_end"
+    ]
+  },
+  "enter_checkNotice": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "公告"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 2813,
+        "y": 476
+      }
+    },
+    "next": [
+      "enter_noticeClose"
+    ]
+  },
+  "enter_end": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 4205,
+        "y": 916
+      }
+    }
+  },
+  "enter_startApp": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StartApp",
+      "param": {
+        "package": "\"com.GentleManiac.HorizonWalker\""
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "rate_limit": 5000,
+    "timeout": 100000,
+    "$__mpe_code": {
+      "position": {
+        "x": 2167,
+        "y": 457
+      }
+    },
+    "next": [
+      "enter_startGame"
+    ]
+  }
+}

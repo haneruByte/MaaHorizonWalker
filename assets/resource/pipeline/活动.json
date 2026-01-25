@@ -1,0 +1,424 @@
+{
+  "$__mpe_config_活动": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": -993,
+        "y": 136,
+        "zoom": 0.76
+      },
+      "filename": "活动",
+      "version": "v0.16.0"
+    }
+  },
+  "event_closeA": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          38,
+          643,
+          101,
+          50
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "rate_limit": 1000,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 3789,
+        "y": 338
+      }
+    },
+    "next": [
+      "event_checkDailyB"
+    ]
+  },
+  "event_getAllA": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "全部领取",
+          "一键领取"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "rate_limit": 1000,
+    "post_wait_freezes": {
+      "time": 5000,
+      "threshold": 0.99
+    },
+    "timeout": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 3112,
+        "y": 398
+      }
+    },
+    "next": [
+      "event_clickToContinueA"
+    ]
+  },
+  "event_clickToContinueA": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击",
+          "点击屏幕",
+          "点击屏幕继续"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "rate_limit": 1000,
+    "post_wait_freezes": {
+      "time": 5000,
+      "threshold": 0.99
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 3452,
+        "y": 370
+      }
+    },
+    "next": [
+      "event_closeA"
+    ]
+  },
+  "event_checkGiftA": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "活动签到"
+        ],
+        "roi": [
+          86,
+          164,
+          128,
+          69
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 2767,
+        "y": 416
+      }
+    },
+    "next": [
+      "event_getAllA"
+    ]
+  },
+  "event_mainTimeout": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 10000,
+    "$__mpe_code": {
+      "position": {
+        "x": 2413,
+        "y": 454
+      }
+    },
+    "next": [
+      "event_checkGiftA",
+      "event_checkDailyB",
+      "event_checkMissionC"
+    ],
+    "on_error": [
+      "event_eventClick"
+    ]
+  },
+  "event_eventClick": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          732,
+          81,
+          131,
+          52
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 2094,
+        "y": 449
+      }
+    },
+    "next": [
+      "event_mainTimeout"
+    ]
+  },
+  "event_checkDailyB": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "日程表"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 2698,
+        "y": 935
+      }
+    },
+    "next": [
+      "event_getAllB",
+      "event_closeB"
+    ]
+  },
+  "event_clickToContinueB": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击",
+          "点击屏幕",
+          "点击屏幕继续"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 3257,
+        "y": 943
+      }
+    },
+    "next": [
+      "event_closeB"
+    ]
+  },
+  "event_closeB": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          38,
+          643,
+          101,
+          50
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 3708,
+        "y": 960
+      }
+    },
+    "next": [
+      "event_checkMissionC"
+    ]
+  },
+  "event_checkMissionC": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "活动任务"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 2803,
+        "y": 1316
+      }
+    },
+    "next": [
+      "event_getAllC",
+      "event_closeC"
+    ]
+  },
+  "event_getAllC": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "全部领取"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 3138,
+        "y": 1306
+      }
+    },
+    "next": [
+      "event_clickToContinueC"
+    ]
+  },
+  "event_clickToContinueC": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击屏幕继续",
+          "点击屏幕",
+          "点击"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 3441,
+        "y": 1301
+      }
+    },
+    "next": [
+      "event_closeC"
+    ]
+  },
+  "event_home": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          831,
+          7,
+          48,
+          33
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 2744,
+        "y": 1760
+      }
+    }
+  },
+  "event_closeC": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          38,
+          643,
+          101,
+          50
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 3755,
+        "y": 1476
+      }
+    },
+    "next": [
+      "event_home"
+    ]
+  },
+  "event_getAllB": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "全部领取"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 2972,
+        "y": 777
+      }
+    },
+    "next": [
+      "event_clickToContinueB"
+    ]
+  }
+}

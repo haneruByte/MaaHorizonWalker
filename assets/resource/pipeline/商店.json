@@ -1,0 +1,982 @@
+{
+  "$__mpe_config_愿望": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": -5888,
+        "y": -1149,
+        "zoom": 1
+      },
+      "filename": "愿望",
+      "version": "v0.14.2"
+    }
+  },
+  "shop_shopCheck": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "商店"
+        ],
+        "roi": [
+          557,
+          81,
+          93,
+          41
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 3000,
+    "focus": {
+      "Node.Recognition.Failed": "请返回主界面"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 5416,
+        "y": 690
+      }
+    },
+    "next": [
+      "shop_shopClick"
+    ]
+  },
+  "shop_shopClick": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          577,
+          128,
+          121,
+          227
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "repeat": 2,
+    "$__mpe_code": {
+      "position": {
+        "x": 5685,
+        "y": 698
+      }
+    },
+    "next": [
+      "shop_dailyClick",
+      "shop_coinClick"
+    ]
+  },
+  "shop_dailyClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "每日限量"
+        ],
+        "roi": [
+          7,
+          182,
+          72,
+          49
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 5980,
+        "y": 698
+      }
+    },
+    "next": [
+      "shop_giftClick",
+      "shop_ticketBClick",
+      "shop_ticketAClick",
+      "shop_ticketSClick",
+      "shop_coinClick"
+    ]
+  },
+  "shop_giftClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "礼物"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "enabled": true,
+    "$__mpe_code": {
+      "position": {
+        "x": 6324,
+        "y": 583
+      }
+    },
+    "next": [
+      "shop_butterflyCheck"
+    ]
+  },
+  "shop_ticketBClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "ticketB.png"
+        ],
+        "threshold": 0.95,
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "enabled": true,
+    "$__mpe_code": {
+      "position": {
+        "x": 6338,
+        "y": 969
+      }
+    },
+    "next": [
+      "shop_butterflyCheckB"
+    ]
+  },
+  "shop_ticketSClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "ticketS.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "enabled": true,
+    "$__mpe_code": {
+      "position": {
+        "x": 6337,
+        "y": 1745
+      }
+    },
+    "next": [
+      "shop_butterflyCheckS"
+    ]
+  },
+  "shop_ticketAClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "ticketA.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "enabled": false,
+    "$__mpe_code": {
+      "position": {
+        "x": 6332,
+        "y": 1332
+      }
+    },
+    "next": [
+      "shop_butterflyCheckA"
+    ]
+  },
+  "shop_giftPurchase": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "购买"
+        ],
+        "roi": [
+          396,
+          536,
+          93,
+          22
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6616,
+        "y": 580
+      }
+    },
+    "next": [
+      "shop_giftPurchaseConfirm"
+    ]
+  },
+  "shop_giftPurchaseConfirm": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "确认"
+        ],
+        "roi": [
+          450,
+          414,
+          110,
+          52
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6887,
+        "y": 571
+      }
+    },
+    "next": [
+      "shop_giftPurchaseExit"
+    ]
+  },
+  "shop_giftPurchaseExit": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击屏幕继续"
+        ],
+        "roi": [
+          421,
+          534,
+          147,
+          33
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7186,
+        "y": 579
+      }
+    },
+    "next": [
+      "shop_ticketBClick",
+      "shop_ticketAClick",
+      "shop_ticketSClick",
+      "shop_coinClick"
+    ]
+  },
+  "shop_giftMax": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "Max"
+        ],
+        "roi": [
+          552,
+          434,
+          47,
+          33
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          566,
+          446,
+          17,
+          8
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6638,
+        "y": 251
+      }
+    },
+    "next": [
+      "shop_giftPurchase"
+    ]
+  },
+  "shop_butterflyCheck": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "butterfly.png"
+        ],
+        "roi": [
+          336,
+          457,
+          213,
+          121
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "inverse": true,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6344,
+        "y": 241
+      }
+    },
+    "next": [
+      "shop_giftMax",
+      "shop_giftPurchase"
+    ]
+  },
+  "shop_butterflyCheckB": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "butterfly.png"
+        ],
+        "roi": [
+          336,
+          457,
+          213,
+          121
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "inverse": true,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6635,
+        "y": 950
+      }
+    },
+    "next": [
+      "shop_ticketBPurchase"
+    ]
+  },
+  "shop_ticketBPurchase": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "购买"
+        ],
+        "roi": [
+          396,
+          536,
+          93,
+          22
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6930,
+        "y": 972
+      }
+    },
+    "next": [
+      "shop_ticketBPurchaseConfirm"
+    ]
+  },
+  "shop_ticketBPurchaseConfirm": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "确认"
+        ],
+        "roi": [
+          450,
+          414,
+          110,
+          52
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7207,
+        "y": 966
+      }
+    },
+    "next": [
+      "shop_ticketBPurchaseExit"
+    ]
+  },
+  "shop_ticketBPurchaseExit": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击屏幕继续"
+        ],
+        "roi": [
+          421,
+          534,
+          147,
+          33
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7492,
+        "y": 962
+      }
+    },
+    "next": [
+      "shop_ticketAClick",
+      "shop_ticketSClick",
+      "shop_coinClick"
+    ]
+  },
+  "shop_butterflyCheckA": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "butterfly.png"
+        ],
+        "roi": [
+          336,
+          457,
+          213,
+          121
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "inverse": true,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6646,
+        "y": 1326
+      }
+    },
+    "next": [
+      "shop_ticketAPurchase"
+    ]
+  },
+  "shop_ticketAPurchase": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "购买"
+        ],
+        "roi": [
+          396,
+          536,
+          93,
+          22
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6936,
+        "y": 1338
+      }
+    },
+    "next": [
+      "shop_ticketAPurchaseConfirm"
+    ]
+  },
+  "shop_ticketAPurchaseConfirm": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "确认"
+        ],
+        "roi": [
+          450,
+          414,
+          110,
+          52
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7255,
+        "y": 1339
+      }
+    },
+    "next": [
+      "shop_ticketAPurchaseExit"
+    ]
+  },
+  "shop_ticketAPurchaseExit": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击屏幕继续"
+        ],
+        "roi": [
+          421,
+          534,
+          147,
+          33
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7547,
+        "y": 1338
+      }
+    },
+    "next": [
+      "shop_ticketSClick",
+      "shop_coinClick"
+    ]
+  },
+  "shop_butterflyCheckS": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "butterfly.png"
+        ],
+        "roi": [
+          336,
+          457,
+          213,
+          121
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "inverse": true,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6630,
+        "y": 1746
+      }
+    },
+    "next": [
+      "shop_ticketSPurchase"
+    ]
+  },
+  "shop_ticketSPurchase": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "购买"
+        ],
+        "roi": [
+          396,
+          536,
+          93,
+          22
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6958,
+        "y": 1744
+      }
+    },
+    "next": [
+      "shop_ticketSPurchaseConfirm"
+    ]
+  },
+  "shop_ticketSPurchaseConfirm": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "确认"
+        ],
+        "roi": [
+          450,
+          414,
+          110,
+          52
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7271,
+        "y": 1744
+      }
+    },
+    "next": [
+      "shop_ticketSPurchaseExit"
+    ]
+  },
+  "shop_ticketSPurchaseExit": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击屏幕继续"
+        ],
+        "roi": [
+          421,
+          534,
+          147,
+          33
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7572,
+        "y": 1742
+      }
+    },
+    "next": [
+      "shop_coinClick"
+    ]
+  },
+  "shop_coinClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi": [
+          7,
+          455,
+          72,
+          46
+        ],
+        "expected": [
+          "充值商店"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6013,
+        "y": 2257
+      }
+    },
+    "next": [
+      "shop_coinClick2"
+    ]
+  },
+  "shop_coinClick2": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "限定礼包"
+        ],
+        "roi": [
+          7,
+          507,
+          51,
+          31
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6302,
+        "y": 2256
+      }
+    },
+    "next": [
+      "shop_coinClick3"
+    ]
+  },
+  "shop_coinClick3": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "免费"
+        ],
+        "roi": [
+          189,
+          292,
+          67,
+          33
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6616,
+        "y": 2250
+      }
+    },
+    "next": [
+      "shop_butterflyCheckCoin"
+    ]
+  },
+  "shop_coinPurchase": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "购买"
+        ],
+        "roi": [
+          396,
+          536,
+          93,
+          22
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7172,
+        "y": 2237
+      }
+    },
+    "next": [
+      "shop_coinPurchaseExit"
+    ]
+  },
+  "shop_butterflyCheckCoin": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "butterfly.png"
+        ],
+        "roi": [
+          336,
+          457,
+          213,
+          121
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "inverse": true,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6892,
+        "y": 2226
+      }
+    },
+    "next": [
+      "shop_coinPurchase"
+    ]
+  },
+  "shop_coinPurchaseExit": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "点击屏幕继续"
+        ],
+        "roi": [
+          421,
+          534,
+          147,
+          33
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7492,
+        "y": 2238
+      }
+    },
+    "next": [
+      "shop_homeExit"
+    ]
+  },
+  "shop_homeExit": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "shopHome.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "repeat": 2,
+    "repeat_delay": 300,
+    "$__mpe_code": {
+      "position": {
+        "x": 7811,
+        "y": 2238
+      }
+    }
+  }
+}

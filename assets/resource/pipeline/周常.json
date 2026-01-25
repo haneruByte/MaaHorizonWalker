@@ -1,0 +1,809 @@
+{
+  "$__mpe_config_周常": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": -5620,
+        "y": -535,
+        "zoom": 0.76
+      },
+      "filename": "周常",
+      "version": "v0.16.0"
+    }
+  },
+  "weekly_guanQiaClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "关卡"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 400,
+    "repeat": 3,
+    "repeat_delay": 300,
+    "timeout": 10000,
+    "focus": {
+      "Node.Recognition.Failed": "请返回主界面"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 6556,
+        "y": 720
+      }
+    },
+    "next": [
+      "weekly_emptyMissionsCheck"
+    ],
+    "on_error": [
+      "weekly_homeClick"
+    ]
+  },
+  "weekly_emptyMissionsCheck": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "可获得奖励"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 400,
+    "$__mpe_code": {
+      "position": {
+        "x": 6899,
+        "y": 690
+      }
+    },
+    "next": [
+      "weekly_weeklyMissionsClick"
+    ]
+  },
+  "weekly_emptyMissionsAClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "本周奖励未领取"
+        ],
+        "roi": [
+          49,
+          463,
+          615,
+          119
+        ],
+        "order_by": "Horizontal"
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "rate_limit": 3000,
+    "pre_delay": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7774,
+        "y": 461
+      }
+    },
+    "next": [
+      "[JumpBack]weekly_swipeDown"
+    ]
+  },
+  "weekly_BattleClick": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          699,
+          263,
+          46,
+          60
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "rate_limit": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8459,
+        "y": 236
+      }
+    },
+    "next": [
+      "weekly_battleStartClick"
+    ]
+  },
+  "weekly_battleStartClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "出击"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 4294967290,
+    "rate_limit": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8610,
+        "y": 492
+      }
+    },
+    "next": [
+      "weekly_endBattleClick"
+    ]
+  },
+  "weekly_endBattleClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一",
+          "下"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "repeat": 2,
+    "repeat_delay": 300,
+    "post_wait_freezes": 1000,
+    "rate_limit": 10000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8883,
+        "y": 518
+      }
+    },
+    "next": [
+      "weekly_nextBattleClick"
+    ]
+  },
+  "weekly_exitEnd": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "repeat": 3,
+    "repeat_delay": 300,
+    "pre_delay": 2000,
+    "post_wait_freezes": 5000,
+    "inverse": true,
+    "$__mpe_code": {
+      "position": {
+        "x": 9767,
+        "y": 178
+      }
+    }
+  },
+  "weekly_weeklyMissionsClick": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          139,
+          494,
+          203,
+          48
+        ]
+      }
+    },
+    "timeout": 5000,
+    "inverse": false,
+    "$__mpe_code": {
+      "position": {
+        "x": 7209,
+        "y": 749
+      }
+    },
+    "next": [
+      "weekly_timeOutCheck1"
+    ]
+  },
+  "weekly_homeClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "home.png"
+        ],
+        "roi": [
+          834,
+          18,
+          34,
+          36
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9594,
+        "y": 1370
+      }
+    },
+    "next": [
+      "weekly_end"
+    ]
+  },
+  "weekly_deepClick": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          34,
+          598,
+          37,
+          35
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 8313,
+        "y": 510
+      }
+    },
+    "next": [
+      "weekly_BattleClick"
+    ]
+  },
+  "weekly_emptyMissionsBCheck": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "本周奖励未领取",
+          "层所有奖励领取完成"
+        ],
+        "roi": [
+          685,
+          468,
+          140,
+          120
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 4000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7800,
+        "y": 809
+      }
+    },
+    "next": [
+      "weekly_missionsBClick"
+    ],
+    "on_error": [
+      "weekly_homeClick"
+    ]
+  },
+  "weekly_missionsBClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "变迁裂缝"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 8153,
+        "y": 842
+      }
+    },
+    "next": [
+      "weekly_BattleClick2"
+    ]
+  },
+  "weekly_BattleClick2": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          230,
+          268,
+          46,
+          47
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 8464,
+        "y": 826
+      }
+    },
+    "next": [
+      "weekly_battleStartClick2"
+    ]
+  },
+  "weekly_battleStartCheck2": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "自动进行中"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 5000,
+    "rate_limit": 5000,
+    "timeout": 10000,
+    "inverse": true,
+    "$__mpe_code": {
+      "position": {
+        "x": 8124,
+        "y": 1578
+      }
+    },
+    "next": [
+      "weekly_nextBattleClick2"
+    ]
+  },
+  "weekly_swipeDown": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "begin": [
+          48,
+          598,
+          1,
+          1
+        ],
+        "end": [
+          [
+            52,
+            181,
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 8048,
+        "y": 486
+      }
+    },
+    "next": [
+      "weekly_deepClick"
+    ]
+  },
+  "weekly_nextBattleClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "放弃"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 9044,
+        "y": 226
+      }
+    },
+    "next": [
+      "weekly_timeoutExitCheck"
+    ]
+  },
+  "weekly_timeOutCheck1": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7484,
+        "y": 817
+      }
+    },
+    "next": [
+      "[JumpBack]weekly_emptyMissionsAClick"
+    ],
+    "on_error": [
+      "weekly_timeoutCheck2"
+    ]
+  },
+  "weekly_battleStartClick2": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "出击"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 8776,
+        "y": 844
+      }
+    },
+    "next": [
+      "[JumpBack]weekly_timeOutCheck3"
+    ]
+  },
+  "weekly_nextBattleClick2": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一",
+          "下"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "repeat": 2,
+    "repeat_delay": 300,
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "rate_limit": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8471,
+        "y": 1579
+      }
+    },
+    "next": [
+      "weekly_exitClick2"
+    ]
+  },
+  "weekly_exitClick2": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "完成"
+        ],
+        "roi": [
+          552,
+          527,
+          313,
+          73
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 2000,
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 8871,
+        "y": 1599
+      }
+    },
+    "next": [
+      "weekly_timeoutExitCheck2"
+    ]
+  },
+  "weekly_exitLoopClick2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "pre_delay": 2000,
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 9206,
+        "y": 1991
+      }
+    },
+    "next": [
+      "weekly_timeoutExitCheck2"
+    ]
+  },
+  "weekly_end": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 9869,
+        "y": 1372
+      }
+    }
+  },
+  "weekly_timeoutCheck2": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7848,
+        "y": 1157
+      }
+    },
+    "next": [
+      "weekly_emptyMissionsBCheck"
+    ],
+    "on_error": [
+      "weekly_homeClick"
+    ]
+  },
+  "weekly_timeOutCheck3": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7343,
+        "y": 1603
+      }
+    },
+    "next": [
+      "weekly_nextBattleCheck2"
+    ]
+  },
+  "weekly_nextBattleCheck2": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一",
+          "下"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 7724,
+        "y": 1606
+      }
+    },
+    "next": [
+      "weekly_battleStartCheck2"
+    ]
+  },
+  "weekly_timeoutExitCheck": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9374,
+        "y": 229
+      }
+    },
+    "next": [
+      "weekly_exitEnd"
+    ],
+    "on_error": [
+      "weekly_exitLoopClick"
+    ]
+  },
+  "weekly_exitLoopClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 9352,
+        "y": 602
+      }
+    },
+    "next": [
+      "weekly_timeoutExitCheck"
+    ]
+  },
+  "weekly_timeoutExitCheck2": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9178,
+        "y": 1607
+      }
+    },
+    "on_error": [
+      "weekly_exitLoopClick2"
+    ],
+    "next": [
+      "weekly_exitEnd2"
+    ]
+  },
+  "weekly_exitEnd2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "inverse": true,
+    "$__mpe_code": {
+      "position": {
+        "x": 9483,
+        "y": 1627
+      }
+    },
+    "next": [
+      "weekly_homeClick"
+    ]
+  }
+}

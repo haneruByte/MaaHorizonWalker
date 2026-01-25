@@ -1,0 +1,128 @@
+{
+  "$__mpe_config_收件箱": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": -6572,
+        "y": -749,
+        "zoom": 1.39
+      },
+      "filename": "收件箱",
+      "version": "v0.14.2"
+    }
+  },
+  "mail_mailBoxClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "roi": [
+          716,
+          625,
+          73,
+          90
+        ],
+        "template": [
+          "mailBox.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "click",
+      "param": {}
+    },
+    "timeout": 3000,
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "repeat": 2,
+    "focus": {
+      "Node.Recognition.Failed": "请返回主界面"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 4782,
+        "y": 781
+      }
+    },
+    "next": [
+      "mail_getAllClick"
+    ]
+  },
+  "mail_getAllClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "全部领取"
+        ],
+        "roi": [
+          98,
+          674,
+          105,
+          24
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 2000,
+    "$__mpe_code": {
+      "position": {
+        "x": 5103,
+        "y": 768
+      }
+    },
+    "next": [
+      "mail_click"
+    ]
+  },
+  "mail_click": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "pre_delay": 400,
+    "$__mpe_code": {
+      "position": {
+        "x": 5406,
+        "y": 766
+      }
+    },
+    "next": [
+      "mail_homeClick"
+    ]
+  },
+  "mail_homeClick": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          844,
+          10,
+          16,
+          26
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 5709,
+        "y": 755
+      }
+    }
+  }
+}

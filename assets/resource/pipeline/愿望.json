@@ -1,0 +1,360 @@
+{
+  "$__mpe_config_愿望": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": -6682,
+        "y": -452,
+        "zoom": 0.76
+      },
+      "filename": "愿望",
+      "version": "v0.14.2"
+    }
+  },
+  "wish_guanQiaClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "关卡"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "repeat": 2,
+    "timeout": 3000,
+    "focus": {
+      "Node.Recognition.Failed": "请返回主界面"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 6839,
+        "y": 477
+      }
+    },
+    "next": [
+      "wish_wishClick"
+    ]
+  },
+  "wish_wishClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "愿望"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7147,
+        "y": 468
+      }
+    },
+    "next": [
+      "wish_timeOutCheck"
+    ]
+  },
+  "wish_coinClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "光辉币"
+        ],
+        "roi": [
+          17,
+          138,
+          128,
+          166
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7769,
+        "y": 491
+      }
+    },
+    "next": [
+      "wish_emptyRequestCheck"
+    ],
+    "on_error": [
+      "wish_homeClick"
+    ]
+  },
+  "wish_coinBattleClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "的愿望"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "rate_limit": 5000,
+    "timeout": 4294967290,
+    "$__mpe_code": {
+      "position": {
+        "x": 8329,
+        "y": 482
+      }
+    },
+    "next": [
+      "wish_battleStartClick"
+    ]
+  },
+  "wish_battleStartClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "出击"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 4294967290,
+    "rate_limit": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8607,
+        "y": 480
+      }
+    },
+    "next": [
+      "wish_endBattleClick"
+    ]
+  },
+  "wish_endBattleClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "repeat": 2,
+    "repeat_delay": 300,
+    "post_wait_freezes": 1000,
+    "rate_limit": 10000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8888,
+        "y": 497
+      }
+    },
+    "next": [
+      "wish_exitClick"
+    ]
+  },
+  "wish_exitClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9179,
+        "y": 512
+      }
+    }
+  },
+  "wish_emptyRequestCheck": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "0"
+        ],
+        "roi": [
+          803,
+          89,
+          14,
+          22
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 5000,
+    "inverse": true,
+    "$__mpe_code": {
+      "position": {
+        "x": 8071,
+        "y": 478
+      }
+    },
+    "next": [
+      "wish_coinBattleClick"
+    ]
+  },
+  "wish_homeClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "home.png"
+        ],
+        "roi": [
+          817,
+          12,
+          68,
+          52
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9404,
+        "y": 1243
+      }
+    },
+    "next": [
+      {
+        "name": "wish_timeoutCheck2",
+        "jump_back": true
+      }
+    ]
+  },
+  "wish_timeOutCheck": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7438,
+        "y": 477
+      }
+    },
+    "next": [
+      {
+        "name": "wish_coinClick",
+        "jump_back": true
+      }
+    ]
+  },
+  "wish_homeClick2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "home.png"
+        ],
+        "roi": [
+          817,
+          12,
+          68,
+          52
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 10066,
+        "y": 1258
+      }
+    }
+  },
+  "wish_end": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 9723,
+        "y": 1570
+      }
+    }
+  },
+  "wish_timeoutCheck2": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9710,
+        "y": 1291
+      }
+    },
+    "next": [
+      "wish_homeClick2"
+    ],
+    "on_error": [
+      "wish_end"
+    ]
+  }
+}

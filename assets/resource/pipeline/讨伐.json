@@ -1,0 +1,575 @@
+{
+  "$__mpe_config_讨伐": {
+    "$__mpe_code": {
+      "prefix": "",
+      "savedViewport": {
+        "x": -4744,
+        "y": -297,
+        "zoom": 0.57
+      },
+      "filename": "讨伐",
+      "version": "v0.14.2"
+    }
+  },
+  "hunt_guanQiaClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "关卡"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "timeout": 10000,
+    "post_wait_freezes": 1000,
+    "repeat": 2,
+    "focus": {
+      "Node.Recognition.Failed": "请返回主界面"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 6826,
+        "y": 493
+      }
+    },
+    "next": [
+      "hunt_wishClick"
+    ]
+  },
+  "hunt_wishClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "讨伐"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7219,
+        "y": 475
+      }
+    },
+    "next": [
+      "hunt_50click"
+    ]
+  },
+  "hunt_targetClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "优菲特尔.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8262,
+        "y": 1143
+      }
+    },
+    "next": [
+      {
+        "name": "hunt_battleStartClick",
+        "jump_back": true
+      }
+    ],
+    "on_error": [
+      "hunt_BattleStartClick"
+    ]
+  },
+  "hunt_battleStartClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "扫荡"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 3000,
+    "rate_limit": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8481,
+        "y": 542
+      }
+    },
+    "next": [
+      "hunt_skipTimeOutChck"
+    ]
+  },
+  "hunt_endBattleClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "repeat": 2,
+    "repeat_delay": 300,
+    "post_wait_freezes": 1000,
+    "rate_limit": 10000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9001,
+        "y": 895
+      }
+    },
+    "next": [
+      "hunt_exitClick"
+    ]
+  },
+  "hunt_exitClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9359,
+        "y": 923
+      }
+    }
+  },
+  "hunt_emptyRequestCheck": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "0"
+        ],
+        "roi": [
+          813,
+          85,
+          36,
+          26
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 5000,
+    "inverse": true,
+    "$__mpe_code": {
+      "position": {
+        "x": 7770,
+        "y": 496
+      }
+    },
+    "next": [
+      {
+        "name": "hunt_timeoutCheck",
+        "jump_back": true
+      }
+    ]
+  },
+  "hunt_homeClick": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          830,
+          10,
+          44,
+          49
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7765,
+        "y": 871
+      }
+    }
+  },
+  "hunt_50click": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "50"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7502,
+        "y": 518
+      }
+    },
+    "next": [
+      "hunt_emptyRequestCheck"
+    ],
+    "on_error": [
+      "hunt_homeClick"
+    ]
+  },
+  "hunt_swipeToTarget": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "begin": [
+          718,
+          387,
+          1,
+          1
+        ],
+        "end": [
+          [
+            600,
+            389,
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8337,
+        "y": 149
+      }
+    }
+  },
+  "hunt_confirmClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "确认"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 400,
+    "$__mpe_code": {
+      "position": {
+        "x": 8929,
+        "y": 73
+      }
+    },
+    "next": [
+      "hunt_confirmExitClick"
+    ]
+  },
+  "hunt_confirmExitClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "确认"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9424,
+        "y": 83
+      }
+    }
+  },
+  "hunt_BattleStartClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "出击"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 400,
+    "timeout": 4294967290,
+    "rate_limit": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8686,
+        "y": 903
+      }
+    },
+    "next": [
+      "hunt_endBattleClick"
+    ]
+  },
+  "hunt_findTarget": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "优菲特尔.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 2000,
+    "inverse": true,
+    "$__mpe_code": {
+      "position": {
+        "x": 8072,
+        "y": 483
+      }
+    },
+    "next": [
+      "hunt_swipeToTarget"
+    ]
+  },
+  "hunt_timeoutCheck": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 2000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8043,
+        "y": 877
+      }
+    },
+    "next": [
+      "hunt_findTarget"
+    ],
+    "on_error": [
+      "hunt_targetClick"
+    ]
+  },
+  "hunt_cancelClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "取消"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 9200,
+        "y": 449
+      }
+    },
+    "next": [
+      "hunt_backClick"
+    ]
+  },
+  "hunt_backClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "返回"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 9545,
+        "y": 464
+      }
+    },
+    "next": [
+      {
+        "name": "hunt_homeclick",
+        "jump_back": true
+      }
+    ]
+  },
+  "hunt_homeclick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "home.png"
+        ],
+        "roi": [
+          813,
+          9,
+          75,
+          58
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "repeat": 2,
+    "repeat_delay": 100,
+    "post_wait_freezes": 1000,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 9788,
+        "y": 802
+      }
+    },
+    "next": [
+      "hunt_homeclick2"
+    ],
+    "on_error": [
+      "hunt_end"
+    ]
+  },
+  "hunt_end": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 10011,
+        "y": 1254
+      }
+    }
+  },
+  "hunt_skipTimeOutChck": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 2000,
+    "$__mpe_code": {
+      "position": {
+        "x": 8803,
+        "y": 482
+      }
+    },
+    "next": [
+      "hunt_confirmClick"
+    ],
+    "on_error": [
+      "hunt_cancelClick"
+    ]
+  },
+  "hunt_homeclick2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "home.png"
+        ],
+        "roi": [
+          813,
+          9,
+          75,
+          58
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "repeat": 2,
+    "repeat_delay": 100,
+    "post_wait_freezes": 1000,
+    "timeout": 2000,
+    "$__mpe_code": {
+      "position": {
+        "x": 10182,
+        "y": 867
+      }
+    }
+  }
+}
