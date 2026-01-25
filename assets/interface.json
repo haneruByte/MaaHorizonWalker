@@ -1,108 +1,545 @@
 {
-    // 本文件主要定义了通用 UI 的行为和显示内容
-    // 可参考文档和示例添加更多您需要的功能
-    // 文档：https://maafw.xyz/docs/3.3-ProjectInterfaceV2
-    // 示例：https://github.com/MaaXYZ/MaaFramework/blob/main/sample/interface.json
-    "interface_version": 2,
-    "name": "MaaXXX",
-    "description": "这是一个使用 MaaFramework 创建的新项目。",
-    "contact": "QQ群: 123456789",
-    "license": "MIT",
-    "welcome": "首次使用！欢迎使用 MAA!",
-    // 填写项目地址和版本号可实现自动更新功能
-    "github": "https://github.com/MaaXYZ/MaaPracticeBoilerplate",
-    "version": "1.0.0",
-    // Mirror酱为第三方分发服务，新项目默认关闭
-    // 若有需要请联系 Mirror酱 开通，直接自行开启是无法使用的
-    // "mirrorchyan_rid": "MaaXXX",
-    // "mirrorchyan_multiplatform": true,
-    "controller": [
-        {
-            "name": "安卓端",
-            "type": "Adb",
-            "display_short_side": 720 // 默认缩放分辨率的短边长度
-        },
-        {
-            "name": "桌面端",
-            "type": "Win32",
-            "win32": {
-                "class_regex": ".*",
-                "window_regex": "Visual Studio",
-                // 截图及控制方式，请根据项目实际情况修改
-                // 文档: https://maafw.xyz/docs/2.4-ControlMethods
-                "screencap": "PrintWindow", // 截图方式
-                "mouse": "PostMessageWithCursorPos", // 鼠标控制方式
-                "keyboard": "PostMessageWithCursorPos" // 键盘控制方式
-            }
-        }
-    ],
-    "resource": [
-        {
-            "name": "官服",
-            "path": [
-                "./resource"
-            ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "./resource",
-                "./resource_bilibili"
-            ]
-        }
-    ],
-    // 可选的 agent 示例
-    // "agent": {
-    //     "child_exec": "python",
-    //     "child_args": [
-    //         "./agent/main.py"
-    //     ]
-    // },
-    "task": [
-        {
-            "name": "普通任务",
-            "entry": "MyTask1"
-        },
-        {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
-            ]
-        },
-        {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "pipeline_override": {}
-        },
-        {
-            "name": "带Custom的任务",
-            "entry": "MyTask4"
-        }
-    ],
-    "option": {
-        "任务选项1": {
-            "cases": [
-                {
-                    "name": "文本1",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
-                        }
-                    }
-                },
-                {
-                    "name": "文本2",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
-                        }
-                    }
-                }
-            ]
-        }
+  "interface_version": 2,
+  "name": "horizonWalkerAutoProject",
+  "label": "地平线行者 自动化",
+  "version": "0.0.1",
+  "github": "https://github.com/haneruByte/MFAAHorizonWalker",
+  "welcome": "## 2026/01/24 新增功能:活动日常任务",
+  "controller": [
+    {
+      "name": "Android",
+      "label": "Android",
+      "type": "Adb"
     }
+  ],
+  "resource": [
+    {
+      "name": "Default",
+      "label": "默认资源",
+      "path": [
+        "resource"
+      ],
+      "controller": [
+        "Android"
+      ]
+    }
+  ],
+  "task": [
+    {
+      "name": "进入游戏",
+      "entry": "enter_startApp",
+      "default_check": true
+    },
+    {
+      "name": "收菜",
+      "entry": "farm_tribute1",
+      "default_check": true
+    },
+    {
+      "name": "讨伐",
+      "entry": "hunt_guanQiaClick",
+      "default_check": true,
+      "option": [
+        "讨伐目标"
+      ]
+    },
+    {
+      "name": "裂缝探索",
+      "entry": "weekly_guanQiaClick",
+      "default_check": true
+    },
+    {
+      "name": "愿望",
+      "entry": "wish_guanQiaClick",
+      "default_check": true,
+      "option": [
+        "愿望目标"
+      ]
+    },
+    {
+      "name": "商店",
+      "entry": "shop_shopCheck",
+      "default_check": true,
+      "option": [
+        "购买礼物",
+        "购买B级契约券",
+        "购买A级契约券",
+        "购买S级契约券"
+      ]
+    },
+    {
+      "name": "日常任务",
+      "entry": "daily_listClick",
+      "default_check": true
+    },
+    {
+      "name": "活动日常任务",
+      "entry": "event_eventClick",
+      "default_check": true
+    },
+    {
+      "name": "收件箱",
+      "entry": "mail_mailBoxClick",
+      "default_check": true
+    }
+  ],
+  "option": {
+    "讨伐目标": {
+      "type": "select",
+      "label": "选择讨伐目标",
+      "default_case": "优菲特尔",
+      "cases": [
+        {
+          "name": "织遍千里的织布机",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "织遍千里的织布机.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "织遍千里的织布机.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "游荡世间的微风",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "游荡世间的微风.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "游荡世间的微风.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "启示录四骑士",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "启示录四骑士.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "启示录四骑士.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "七瓣花骑士",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "七瓣花骑士.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "七瓣花骑士.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "永恒之战",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "永恒之战.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "永恒之战.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "灿烂大地的触碰",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "灿烂大地的触碰.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "灿烂大地的触碰.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "亡灵的宴会",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "亡灵的宴会.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "亡灵的宴会.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "协调",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "协调.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "协调.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "优菲特尔",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "优菲特尔.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "优菲特尔.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "罪孽清算",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "罪孽清算.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "罪孽清算.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "小丑面具",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "小丑面具.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "小丑面具.png"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "黎明的庇佑",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "黎明的庇佑.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "黎明的庇佑.png"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "购买礼物": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "shop_giftClick": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "shop_giftClick": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "购买B级契约券": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "shop_ticketBClick": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "shop_ticketBClick": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "购买A级契约券": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "shop_ticketAClick": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "shop_ticketAClick": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "购买S级契约券": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "shop_ticketSClick": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "shop_ticketSClick": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "愿望目标": {
+      "type": "select",
+      "label": "选择愿望目标",
+      "default_case": "光辉币",
+      "cases": [
+        {
+          "name": "光辉币",
+          "pipeline_override": {
+            "wish_coinClick": {
+              "recognition": {
+                "type": "OCR",
+                "param": {
+                  "expected": [
+                    "光辉币"
+                  ],
+                  "roi": [
+                    17,
+                    138,
+                    128,
+                    166
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "护卫经验值",
+          "pipeline_override": {
+            "wish_coinClick": {
+              "recognition": {
+                "type": "OCR",
+                "param": {
+                  "expected": [
+                    "护卫经验值"
+                  ],
+                  "roi": [
+                    17,
+                    138,
+                    128,
+                    166
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "武器经验值",
+          "pipeline_override": {
+            "wish_coinClick": {
+              "recognition": {
+                "type": "OCR",
+                "param": {
+                  "expected": [
+                    "武器经验值"
+                  ],
+                  "roi": [
+                    17,
+                    138,
+                    128,
+                    166
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
 }
