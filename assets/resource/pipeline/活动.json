@@ -46,12 +46,13 @@
       "param": {
         "expected": [
           "全部领取",
-          "一键领取"
+          "一键领取",
+          "领取"
         ]
       }
     },
     "action": {
-      "type": "LongPress",
+      "type": "Click",
       "param": {}
     },
     "rate_limit": 1000,
@@ -82,7 +83,7 @@
       }
     },
     "action": {
-      "type": "LongPress",
+      "type": "Click",
       "param": {}
     },
     "rate_limit": 1000,
@@ -366,7 +367,10 @@
         "x": 2744,
         "y": 1760
       }
-    }
+    },
+    "next": [
+      "homeConfirm_check1"
+    ]
   },
   "event_closeC": {
     "recognition": {

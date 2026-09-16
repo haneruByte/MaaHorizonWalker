@@ -25,9 +25,7 @@
       "param": {}
     },
     "post_wait_freezes": 1000,
-    "post_delay": 400,
-    "repeat": 3,
-    "repeat_delay": 300,
+    "post_delay": 500,
     "timeout": 10000,
     "focus": {
       "Node.Recognition.Failed": "请返回主界面"
@@ -50,7 +48,9 @@
       "type": "OCR",
       "param": {
         "expected": [
-          "可获得奖励"
+          "可获得奖励",
+          "可获得奖助",
+          "奖助"
         ]
       }
     },
@@ -100,7 +100,7 @@
       }
     },
     "next": [
-      "[JumpBack]weekly_swipeDown"
+      "weekly_swipeDown"
     ]
   },
   "weekly_BattleClick": {
@@ -169,11 +169,9 @@
       }
     },
     "action": {
-      "type": "Click",
+      "type": "LongPress",
       "param": {}
     },
-    "repeat": 2,
-    "repeat_delay": 300,
     "post_wait_freezes": 1000,
     "rate_limit": 10000,
     "$__mpe_code": {
@@ -236,7 +234,7 @@
       }
     },
     "next": [
-      "weekly_timeOutCheck1"
+      "[JumpBack]weekly_timeOutCheck1"
     ]
   },
   "weekly_homeClick": {
@@ -275,13 +273,13 @@
       "param": {}
     },
     "action": {
-      "type": "LongPress",
+      "type": "Click",
       "param": {
         "target": [
-          34,
-          598,
-          37,
-          35
+          30,
+          245,
+          45,
+          45
         ]
       }
     },
@@ -455,7 +453,14 @@
       "type": "OCR",
       "param": {
         "expected": [
-          "放弃"
+          "放弃",
+          "完成"
+        ],
+        "roi": [
+          0,
+          530,
+          900,
+          190
         ]
       }
     },
@@ -494,7 +499,7 @@
       }
     },
     "next": [
-      "[JumpBack]weekly_emptyMissionsAClick"
+      "weekly_emptyMissionsAClick"
     ],
     "on_error": [
       "weekly_timeoutCheck2"
@@ -571,7 +576,7 @@
       }
     },
     "action": {
-      "type": "LongPress",
+      "type": "DoNothing",
       "param": {}
     },
     "pre_delay": 2000,

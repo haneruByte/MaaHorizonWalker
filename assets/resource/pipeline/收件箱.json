@@ -123,6 +123,9 @@
         "x": 5709,
         "y": 755
       }
-    }
+    },
+    "next": [
+      "homeConfirm_check1"
+    ]
   }
 }

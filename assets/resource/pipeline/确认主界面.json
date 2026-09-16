@@ -1,0 +1,844 @@
+{
+  "$__mpe_config_确认主界面": {
+    "$__mpe_code": {
+      "prefix": "",
+      "filename": "确认主界面",
+      "version": "v0.3.0"
+    }
+  },
+  "homeConfirm_check1": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 4000,
+    "pre_delay": 800,
+    "post_delay": 200,
+    "next": [
+      "homeConfirm_ready",
+      "homeConfirm_tapX1"
+    ],
+    "on_error": [
+      "homeConfirm_tapX1"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 11980,
+        "y": 400
+      }
+    }
+  },
+  "homeConfirm_ready": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "关卡"
+        ],
+        "roi": [
+          640,
+          300,
+          220,
+          120
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 1200,
+    "pre_delay": 100,
+    "next": [
+      "homeConfirm_done"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12300,
+        "y": 400
+      }
+    }
+  },
+  "homeConfirm_tapX1": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          796,
+          171,
+          23,
+          23
+        ]
+      }
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 600,
+    "next": [
+      "homeConfirm_afterTap"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12050,
+        "y": 400
+      }
+    }
+  },
+  "homeConfirm_afterTap": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 4000,
+    "pre_delay": 400,
+    "next": [
+      "homeConfirm_ready",
+      "homeConfirm_findClose"
+    ],
+    "on_error": [
+      "homeConfirm_findClose"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12070,
+        "y": 400
+      }
+    }
+  },
+  "homeConfirm_findClose": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "promo_close.png",
+          "close.png"
+        ],
+        "roi": [
+          740,
+          140,
+          110,
+          90
+        ],
+        "threshold": 0.75
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 600,
+    "timeout": 1500,
+    "next": [
+      "homeConfirm_afterFind"
+    ],
+    "on_error": [
+      "homeConfirm_fail"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12090,
+        "y": 400
+      }
+    }
+  },
+  "homeConfirm_afterFind": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 4000,
+    "pre_delay": 400,
+    "next": [
+      "homeConfirm_ready",
+      "homeConfirm_fail"
+    ],
+    "on_error": [
+      "homeConfirm_fail"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12110,
+        "y": 400
+      }
+    }
+  },
+  "homeConfirm_done": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "focus": {
+      "start": [
+        "[color:green]已确认回到主界面（检测到「关卡」）[/color]"
+      ],
+      "succeeded": [
+        "[color:green]已确认回到主界面[/color]"
+      ],
+      "toast": [
+        "任务完成",
+        "已确认回到主界面。"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12350,
+        "y": 400
+      }
+    }
+  },
+  "homeConfirm_fail": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "focus": {
+      "start": [
+        "[color:red]无法确认主界面：未检测到「关卡」。\n请手动关闭弹窗并回到主界面后重试。[/color]"
+      ],
+      "succeeded": [
+        "[color:red]主界面确认失败[/color]"
+      ],
+      "toast": [
+        "主界面确认失败",
+        "未检测到「关卡」。已尝试关闭弹窗并点击 ×，仍失败。\n请手动关闭弹窗并回到主界面后重试。"
+      ],
+      "aborted": true,
+      "Node.Action.Starting": "[color:red]主界面确认失败，请手动处理[/color]"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12400,
+        "y": 400
+      }
+    }
+  },
+  "homeGate_check1": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 4000,
+    "pre_delay": 800,
+    "post_delay": 200,
+    "next": [
+      "homeGate_blackScreen",
+      "homeGate_ready",
+      "homeGate_preTapWait"
+    ],
+    "on_error": [
+      "homeGate_ready",
+      "homeGate_preTapWait"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12500,
+        "y": 450
+      }
+    }
+  },
+  "homeGate_blackScreen": {
+    "recognition": {
+      "type": "ColorMatch",
+      "param": {
+        "method": 6,
+        "lower": [
+          0
+        ],
+        "upper": [
+          20
+        ],
+        "count": 580000,
+        "connected": false
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 1000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "homeGate_blackWait"
+    ],
+    "on_error": [
+      "homeGate_blackTimeout"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]检测到黑屏，等待画面恢复[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12420,
+        "y": 250
+      }
+    }
+  },
+  "homeGate_blackWait": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "max_hit": 12,
+    "timeout": 10000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "homeGate_blackGone"
+    ],
+    "on_error": [
+      "homeGate_blackRetry"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]黑屏等待中（每 10 秒检查一次，最多 2 分钟）[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12450,
+        "y": 250
+      }
+    }
+  },
+  "homeGate_blackGone": {
+    "recognition": {
+      "type": "ColorMatch",
+      "param": {
+        "method": 6,
+        "lower": [
+          0
+        ],
+        "upper": [
+          20
+        ],
+        "count": 580000,
+        "connected": false
+      }
+    },
+    "inverse": true,
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 1200,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "homeGate_ready",
+      "homeGate_preTapWait"
+    ],
+    "on_error": [
+      "homeGate_preTapWait"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12480,
+        "y": 250
+      }
+    }
+  },
+  "homeGate_blackRetry": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 500,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "homeGate_blackWait"
+    ],
+    "on_error": [
+      "homeGate_blackTimeout"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12510,
+        "y": 250
+      }
+    }
+  },
+  "homeGate_blackTimeout": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "focus": {
+      "start": [
+        "[color:red]黑屏持续超过 2 分钟，结束任务。[/color]"
+      ],
+      "succeeded": [
+        "[color:red]黑屏超时，任务结束[/color]"
+      ],
+      "toast": [
+        "黑屏超时",
+        "画面持续全黑超过 2 分钟，已结束任务。"
+      ],
+      "aborted": true,
+      "Node.Action.Starting": "[color:red]黑屏超时，任务结束[/color]"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12540,
+        "y": 250
+      }
+    }
+  },
+  "homeGate_ready": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "关卡"
+        ],
+        "roi": [
+          640,
+          300,
+          220,
+          120
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 1200,
+    "pre_delay": 100,
+    "next": [
+      "homeGate_pass"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12520,
+        "y": 450
+      }
+    }
+  },
+  "homeGate_preTapWait": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 4000,
+    "pre_delay": 0,
+    "post_delay": 5000,
+    "next": [
+      "homeGate_ready",
+      "homeGate_findClose"
+    ],
+    "on_error": [
+      "homeGate_retryWait1"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]等待 5 秒后查找「今天一天内不再显示」[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12530,
+        "y": 450
+      }
+    }
+  },
+  "homeGate_tapX1": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          796,
+          171,
+          23,
+          23
+        ]
+      }
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 600,
+    "next": [
+      "homeGate_afterTap"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12540,
+        "y": 450
+      }
+    }
+  },
+  "homeGate_afterTap": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 4000,
+    "pre_delay": 400,
+    "next": [
+      "homeGate_ready"
+    ],
+    "on_error": [
+      "homeGate_retryWait1",
+      "homeGate_retryWait2",
+      "homeGate_retryWait3",
+      "homeGate_retryWait4",
+      "homeGate_retryWait5",
+      "homeGate_finalTapX"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12560,
+        "y": 450
+      }
+    }
+  },
+  "homeGate_findClose": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "今天一天内不再显示",
+          "今天一天内不再",
+          "一天内不再显示",
+          "今天一天内",
+          "不再显示"
+        ],
+        "roi": [
+          318,
+          505,
+          253,
+          146
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {}
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 600,
+    "timeout": 1500,
+    "next": [
+      "homeGate_tapX1"
+    ],
+    "on_error": [
+      "homeGate_retryWait1",
+      "homeGate_retryWait2",
+      "homeGate_retryWait3",
+      "homeGate_retryWait4",
+      "homeGate_retryWait5",
+      "homeGate_finalTapX"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12580,
+        "y": 450
+      }
+    }
+  },
+  "homeGate_afterFind": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 4000,
+    "pre_delay": 400,
+    "next": [
+      "homeGate_ready"
+    ],
+    "on_error": [
+      "homeGate_retryWait1",
+      "homeGate_retryWait2",
+      "homeGate_retryWait3",
+      "homeGate_retryWait4",
+      "homeGate_retryWait5",
+      "homeGate_finalTapX"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 12600,
+        "y": 450
+      }
+    }
+  },
+  "homeGate_retryWait1": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "max_hit": 1,
+    "timeout": 10000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "homeGate_ready",
+      "homeGate_findClose"
+    ],
+    "on_error": [
+      "homeGate_retryWait2"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]未找到弹窗文字，继续查找「今天一天内不再显示」（1/5）[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12540,
+        "y": 650
+      }
+    }
+  },
+  "homeGate_retryWait2": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "max_hit": 1,
+    "timeout": 10000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "homeGate_ready",
+      "homeGate_findClose"
+    ],
+    "on_error": [
+      "homeGate_retryWait3"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]未找到弹窗文字，继续查找「今天一天内不再显示」（2/5）[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12570,
+        "y": 650
+      }
+    }
+  },
+  "homeGate_retryWait3": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "max_hit": 1,
+    "timeout": 10000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "homeGate_ready",
+      "homeGate_findClose"
+    ],
+    "on_error": [
+      "homeGate_retryWait4"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]未找到弹窗文字，继续查找「今天一天内不再显示」（3/5）[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12600,
+        "y": 650
+      }
+    }
+  },
+  "homeGate_retryWait4": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "max_hit": 1,
+    "timeout": 10000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "homeGate_ready",
+      "homeGate_findClose"
+    ],
+    "on_error": [
+      "homeGate_retryWait5"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]未找到弹窗文字，继续查找「今天一天内不再显示」（4/5）[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12630,
+        "y": 650
+      }
+    }
+  },
+  "homeGate_retryWait5": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "max_hit": 1,
+    "timeout": 10000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "homeGate_ready",
+      "homeGate_findClose"
+    ],
+    "on_error": [
+      "homeGate_finalTapX"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]未找到弹窗文字，继续查找「今天一天内不再显示」（5/5）[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12660,
+        "y": 650
+      }
+    }
+  },
+  "homeGate_finalTapX": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          796,
+          171,
+          23,
+          23
+        ]
+      }
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 600,
+    "timeout": 4000,
+    "next": [
+      "homeGate_ready"
+    ],
+    "on_error": [
+      "homeConfirm_fail"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]仍未回到主界面，最后一次点击 ×[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 12690,
+        "y": 650
+      }
+    }
+  },
+  "homeGate_pass": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "pre_delay": 200,
+    "next": [
+      "farm_tribute1"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 4800,
+        "y": 400
+      }
+    }
+  }
+}

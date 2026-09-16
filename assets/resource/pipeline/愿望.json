@@ -65,6 +65,258 @@
       "wish_timeOutCheck"
     ]
   },
+  "wish_coinGate": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 4000,
+    "pre_delay": 200,
+    "post_delay": 0,
+    "next": [
+      "wish_blackScreen",
+      "wish_coinClick"
+    ],
+    "on_error": [
+      "wish_coinRetry1"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 7520,
+        "y": 300
+      }
+    }
+  },
+  "wish_blackScreen": {
+    "recognition": {
+      "type": "ColorMatch",
+      "param": {
+        "method": 6,
+        "lower": [
+          0
+        ],
+        "upper": [
+          20
+        ],
+        "count": 580000,
+        "connected": false
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 1000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "wish_blackWait"
+    ],
+    "on_error": [
+      "wish_blackTimeout"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]检测到黑屏，等待画面恢复[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 7240,
+        "y": 120
+      }
+    }
+  },
+  "wish_blackWait": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "max_hit": 12,
+    "timeout": 10000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "wish_blackGone"
+    ],
+    "on_error": [
+      "wish_blackRetry"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]黑屏等待中（每 10 秒检查一次，最多 2 分钟）[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 7270,
+        "y": 120
+      }
+    }
+  },
+  "wish_blackGone": {
+    "recognition": {
+      "type": "ColorMatch",
+      "param": {
+        "method": 6,
+        "lower": [
+          0
+        ],
+        "upper": [
+          20
+        ],
+        "count": 580000,
+        "connected": false
+      }
+    },
+    "inverse": true,
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 4000,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "wish_coinClick"
+    ],
+    "on_error": [
+      "wish_coinRetry1"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 7300,
+        "y": 120
+      }
+    }
+  },
+  "wish_blackRetry": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 500,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": [
+      "wish_blackWait"
+    ],
+    "on_error": [
+      "wish_blackTimeout"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 7330,
+        "y": 120
+      }
+    }
+  },
+  "wish_blackTimeout": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "focus": {
+      "start": [
+        "[color:red]黑屏持续超过 2 分钟，结束任务。[/color]"
+      ],
+      "succeeded": [
+        "[color:red]黑屏超时，任务结束[/color]"
+      ],
+      "toast": [
+        "黑屏超时",
+        "画面持续全黑超过 2 分钟，已结束任务。"
+      ],
+      "aborted": true,
+      "Node.Action.Starting": "[color:red]黑屏超时，任务结束[/color]"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 7360,
+        "y": 120
+      }
+    }
+  },
+  "wish_coinRetry1": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "max_hit": 1,
+    "timeout": 4000,
+    "pre_delay": 200,
+    "post_delay": 0,
+    "next": [
+      "wish_blackScreen",
+      "wish_coinClick"
+    ],
+    "on_error": [
+      "wish_coinRetry2"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]未找到「光辉币」，重试（1/2）[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 7520,
+        "y": 480
+      }
+    }
+  },
+  "wish_coinRetry2": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "max_hit": 1,
+    "timeout": 4000,
+    "pre_delay": 200,
+    "post_delay": 0,
+    "next": [
+      "wish_blackScreen",
+      "wish_coinClick"
+    ],
+    "on_error": [
+      "wish_homeClick"
+    ],
+    "focus": {
+      "start": [
+        "[color:orange]未找到「光辉币」，重试（2/2）[/color]"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 7520,
+        "y": 660
+      }
+    }
+  },
   "wish_coinClick": {
     "recognition": {
       "type": "OCR",
@@ -161,12 +413,10 @@
       }
     },
     "action": {
-      "type": "Click",
+      "type": "LongPress",
       "param": {}
     },
-    "repeat": 2,
-    "repeat_delay": 300,
-    "post_wait_freezes": 1000,
+    "post_wait_freezes": 800,
     "rate_limit": 10000,
     "$__mpe_code": {
       "position": {
@@ -175,29 +425,16 @@
       }
     },
     "next": [
-      "wish_exitClick"
+      "wish_exit1",
+      "wish_nextRetry1",
+      "wish_nextRetry1Ocr"
+    ],
+    "pre_delay": 300,
+    "post_delay": 600,
+    "timeout": 12000,
+    "on_error": [
+      "wish_clearFail"
     ]
-  },
-  "wish_exitClick": {
-    "recognition": {
-      "type": "OCR",
-      "param": {
-        "expected": [
-          "退出"
-        ]
-      }
-    },
-    "action": {
-      "type": "LongPress",
-      "param": {}
-    },
-    "post_wait_freezes": 5000,
-    "$__mpe_code": {
-      "position": {
-        "x": 9179,
-        "y": 512
-      }
-    }
   },
   "wish_emptyRequestCheck": {
     "recognition": {
@@ -284,7 +521,7 @@
     },
     "next": [
       {
-        "name": "wish_coinClick",
+        "name": "wish_coinGate",
         "jump_back": true
       }
     ]
@@ -314,7 +551,10 @@
         "x": 10066,
         "y": 1258
       }
-    }
+    },
+    "next": [
+      "homeConfirm_check1"
+    ]
   },
   "wish_end": {
     "recognition": {
@@ -355,6 +595,403 @@
     ],
     "on_error": [
       "wish_end"
+    ]
+  },
+  "wish_clearFail": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "focus": {
+      "start": [
+        "[color:red]愿望：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。[/color]"
+      ],
+      "succeeded": [
+        "[color:red]愿望：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。[/color]"
+      ],
+      "toast": [
+        "愿望失败",
+        "愿望：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。"
+      ],
+      "aborted": true,
+      "Node.Action.Starting": "[color:red]愿望：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。[/color]"
+    }
+  },
+  "wish_exit1": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 1000,
+    "post_delay": 600,
+    "timeout": 1000,
+    "next": [
+      "wish_coinGate"
+    ]
+  },
+  "wish_nextRetry1": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit2",
+      "wish_nextRetry2",
+      "wish_nextRetry2Ocr"
+    ]
+  },
+  "wish_nextRetry1Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit2",
+      "wish_nextRetry2",
+      "wish_nextRetry2Ocr"
+    ]
+  },
+  "wish_exit2": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 1000,
+    "post_delay": 600,
+    "timeout": 1000,
+    "next": [
+      "wish_coinGate"
+    ]
+  },
+  "wish_nextRetry2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit3",
+      "wish_nextRetry3",
+      "wish_nextRetry3Ocr"
+    ]
+  },
+  "wish_nextRetry2Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit3",
+      "wish_nextRetry3",
+      "wish_nextRetry3Ocr"
+    ]
+  },
+  "wish_exit3": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 1000,
+    "post_delay": 600,
+    "timeout": 1000,
+    "next": [
+      "wish_coinGate"
+    ]
+  },
+  "wish_nextRetry3": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit4",
+      "wish_nextRetry4",
+      "wish_nextRetry4Ocr"
+    ]
+  },
+  "wish_nextRetry3Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit4",
+      "wish_nextRetry4",
+      "wish_nextRetry4Ocr"
+    ]
+  },
+  "wish_exit4": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 1000,
+    "post_delay": 600,
+    "timeout": 1000,
+    "next": [
+      "wish_coinGate"
+    ]
+  },
+  "wish_nextRetry4": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit5",
+      "wish_nextRetry5",
+      "wish_nextRetry5Ocr"
+    ]
+  },
+  "wish_nextRetry4Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit5",
+      "wish_nextRetry5",
+      "wish_nextRetry5Ocr"
+    ]
+  },
+  "wish_exit5": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 1000,
+    "post_delay": 600,
+    "timeout": 1000,
+    "next": [
+      "wish_coinGate"
+    ]
+  },
+  "wish_nextRetry5": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit6"
+    ],
+    "on_error": [
+      "wish_clearFail"
+    ]
+  },
+  "wish_nextRetry5Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "wish_exit6"
+    ],
+    "on_error": [
+      "wish_clearFail"
+    ]
+  },
+  "wish_exit6": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 1000,
+    "post_delay": 600,
+    "timeout": 1000,
+    "next": [
+      "wish_coinGate"
     ]
   }
 }

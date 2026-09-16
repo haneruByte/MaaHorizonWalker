@@ -1,10 +1,10 @@
 {
   "interface_version": 2,
-  "name": "horizonWalkerAutoProject",
+  "name": "MaaHorizonWalker",
   "label": "地平线行者 自动化",
-  "version": "0.0.1",
-  "github": "https://github.com/haneruByte/MFAAHorizonWalker",
-  "welcome": "## 2026/01/24 新增功能:活动日常任务",
+  "version": "v0.1.0",
+  "github": "https://github.com/haneruByte/MaaHorizonWalker",
+  "welcome": "## v0.1.0 首次公开：进入游戏、收菜、讨伐、裂缝探索、商店、日常、活动本、主线、愿望、活动日常、收件箱",
   "controller": [
     {
       "name": "Android",
@@ -27,60 +27,143 @@
   "task": [
     {
       "name": "进入游戏",
-      "entry": "enter_startApp",
+      "entry": "enter_bootHub",
       "default_check": true
     },
     {
       "name": "收菜",
-      "entry": "farm_tribute1",
-      "default_check": true
+      "entry": "homeGate_check1",
+      "default_check": true,
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "farm_tribute1"
+          ]
+        }
+      }
     },
     {
       "name": "讨伐",
-      "entry": "hunt_guanQiaClick",
+      "entry": "homeGate_check1",
       "default_check": true,
       "option": [
         "讨伐目标"
-      ]
+      ],
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "hunt_guanQiaClick"
+          ]
+        }
+      }
     },
     {
       "name": "裂缝探索",
-      "entry": "weekly_guanQiaClick",
-      "default_check": true
+      "entry": "homeGate_check1",
+      "default_check": true,
+      "option": [
+        "裂缝探索层数"
+      ],
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "weekly_guanQiaClick"
+          ]
+        }
+      }
     },
     {
       "name": "愿望",
-      "entry": "wish_guanQiaClick",
+      "entry": "homeGate_check1",
       "default_check": true,
       "option": [
         "愿望目标"
-      ]
+      ],
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "wish_guanQiaClick"
+          ]
+        }
+      }
+    },
+    {
+      "name": "每日活动本",
+      "entry": "homeGate_check1",
+      "default_check": true,
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "story_eventClick"
+          ]
+        }
+      }
     },
     {
       "name": "商店",
-      "entry": "shop_shopCheck",
+      "entry": "homeGate_check1",
       "default_check": true,
       "option": [
         "购买礼物",
         "购买B级契约券",
         "购买A级契约券",
         "购买S级契约券"
-      ]
-    },
-    {
-      "name": "日常任务",
-      "entry": "daily_listClick",
-      "default_check": true
+      ],
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "shop_shopCheck"
+          ]
+        }
+      }
     },
     {
       "name": "活动日常任务",
-      "entry": "event_eventClick",
-      "default_check": true
+      "entry": "homeGate_check1",
+      "default_check": true,
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "event_eventClick"
+          ]
+        }
+      }
+    },
+    {
+      "name": "日常任务",
+      "entry": "homeGate_check1",
+      "default_check": true,
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "daily_listClick"
+          ]
+        }
+      }
     },
     {
       "name": "收件箱",
-      "entry": "mail_mailBoxClick",
-      "default_check": true
+      "entry": "homeGate_check1",
+      "default_check": true,
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "mail_mailBoxClick"
+          ]
+        }
+      }
+    },
+    {
+      "name": "主线自动推进",
+      "entry": "homeGate_check1",
+      "default_check": false,
+      "pipeline_override": {
+        "homeGate_pass": {
+          "next": [
+            "main_guanQiaClick"
+          ]
+        }
+      }
     }
   ],
   "option": {
@@ -388,6 +471,31 @@
               }
             }
           }
+        },
+        {
+          "name": "生命的链接",
+          "pipeline_override": {
+            "hunt_targetClick": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "生命的链接.png"
+                  ]
+                }
+              }
+            },
+            "hunt_findTarget": {
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "生命的链接.png"
+                  ]
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -533,6 +641,189 @@
                     138,
                     128,
                     166
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "裂缝探索层数": {
+      "type": "select",
+      "label": "选择裂缝探索层数",
+      "default_case": "8F",
+      "cases": [
+        {
+          "name": "8F",
+          "pipeline_override": {
+            "weekly_deepClick": {
+              "recognition": {
+                "type": "DirectHit",
+                "param": {}
+              },
+              "action": {
+                "type": "Click",
+                "param": {
+                  "target": [
+                    30,
+                    170,
+                    45,
+                    45
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "9F",
+          "pipeline_override": {
+            "weekly_deepClick": {
+              "recognition": {
+                "type": "DirectHit",
+                "param": {}
+              },
+              "action": {
+                "type": "Click",
+                "param": {
+                  "target": [
+                    30,
+                    245,
+                    45,
+                    45
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "10F",
+          "pipeline_override": {
+            "weekly_deepClick": {
+              "recognition": {
+                "type": "DirectHit",
+                "param": {}
+              },
+              "action": {
+                "type": "Click",
+                "param": {
+                  "target": [
+                    30,
+                    320,
+                    45,
+                    45
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "11F",
+          "pipeline_override": {
+            "weekly_deepClick": {
+              "recognition": {
+                "type": "DirectHit",
+                "param": {}
+              },
+              "action": {
+                "type": "Click",
+                "param": {
+                  "target": [
+                    30,
+                    395,
+                    45,
+                    45
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "12F",
+          "pipeline_override": {
+            "weekly_deepClick": {
+              "recognition": {
+                "type": "DirectHit",
+                "param": {}
+              },
+              "action": {
+                "type": "Click",
+                "param": {
+                  "target": [
+                    30,
+                    470,
+                    45,
+                    45
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "13F",
+          "pipeline_override": {
+            "weekly_deepClick": {
+              "recognition": {
+                "type": "DirectHit",
+                "param": {}
+              },
+              "action": {
+                "type": "Click",
+                "param": {
+                  "target": [
+                    30,
+                    545,
+                    45,
+                    45
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "14F",
+          "pipeline_override": {
+            "weekly_deepClick": {
+              "recognition": {
+                "type": "DirectHit",
+                "param": {}
+              },
+              "action": {
+                "type": "Click",
+                "param": {
+                  "target": [
+                    30,
+                    620,
+                    45,
+                    45
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "15F",
+          "pipeline_override": {
+            "weekly_deepClick": {
+              "recognition": {
+                "type": "DirectHit",
+                "param": {}
+              },
+              "action": {
+                "type": "Click",
+                "param": {
+                  "target": [
+                    30,
+                    695,
+                    45,
+                    45
                   ]
                 }
               }

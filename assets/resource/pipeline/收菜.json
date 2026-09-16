@@ -45,6 +45,7 @@
       "type": "OCR",
       "param": {
         "expected": [
+          "收回贡品",
           "收取贡品"
         ]
       }

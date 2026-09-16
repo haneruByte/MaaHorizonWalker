@@ -147,7 +147,10 @@
         "x": 8490,
         "y": 1691
       }
-    }
+    },
+    "next": [
+      "homeConfirm_check1"
+    ]
   },
   "daily_continueClick": {
     "recognition": {
@@ -162,11 +165,12 @@
           "点击屏幕继续"
         ],
         "roi": [
-          428,
-          535,
-          94,
-          30
-        ]
+          421,
+          530,
+          147,
+          40
+        ],
+        "only_rec": true
       }
     },
     "action": {
@@ -222,11 +226,12 @@
           "点击屏幕继续"
         ],
         "roi": [
-          428,
-          535,
-          94,
-          30
-        ]
+          421,
+          530,
+          147,
+          40
+        ],
+        "only_rec": true
       }
     },
     "action": {
@@ -307,6 +312,12 @@
       "param": {
         "template": [
           "redAlert1.png"
+        ],
+        "roi": [
+          116,
+          234,
+          48,
+          348
         ]
       }
     },
@@ -332,6 +343,12 @@
       "param": {
         "template": [
           "redAlert1.png"
+        ],
+        "roi": [
+          116,
+          234,
+          48,
+          348
         ]
       }
     },
@@ -397,24 +414,35 @@
           "点击屏幕继续"
         ],
         "roi": [
-          428,
-          535,
-          94,
-          30
-        ]
+          421,
+          530,
+          147,
+          40
+        ],
+        "only_rec": true
       }
     },
     "action": {
-      "type": "LongPress",
-      "param": {}
+      "type": "Click",
+      "param": {
+        "target": [
+          421,
+          530,
+          147,
+          40
+        ]
+      }
     },
     "post_wait_freezes": 1000,
-    "post_delay": 500,
+    "post_delay": 1000,
     "$__mpe_code": {
       "position": {
         "x": 10191,
         "y": 1120
       }
-    }
+    },
+    "next": [
+      "daily_timeOutCheck"
+    ]
   }
 }

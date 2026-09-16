@@ -131,12 +131,10 @@
       }
     },
     "action": {
-      "type": "Click",
+      "type": "LongPress",
       "param": {}
     },
-    "repeat": 2,
-    "repeat_delay": 300,
-    "post_wait_freezes": 1000,
+    "post_wait_freezes": 800,
     "rate_limit": 10000,
     "$__mpe_code": {
       "position": {
@@ -145,29 +143,16 @@
       }
     },
     "next": [
-      "hunt_exitClick"
+      "hunt_exit1",
+      "hunt_nextRetry1",
+      "hunt_nextRetry1Ocr"
+    ],
+    "pre_delay": 300,
+    "post_delay": 600,
+    "timeout": 12000,
+    "on_error": [
+      "hunt_clearFail"
     ]
-  },
-  "hunt_exitClick": {
-    "recognition": {
-      "type": "OCR",
-      "param": {
-        "expected": [
-          "退出"
-        ]
-      }
-    },
-    "action": {
-      "type": "LongPress",
-      "param": {}
-    },
-    "post_wait_freezes": 5000,
-    "$__mpe_code": {
-      "position": {
-        "x": 9359,
-        "y": 923
-      }
-    }
   },
   "hunt_emptyRequestCheck": {
     "recognition": {
@@ -225,7 +210,10 @@
         "x": 7765,
         "y": 871
       }
-    }
+    },
+    "next": [
+      "homeConfirm_check1"
+    ]
   },
   "hunt_50click": {
     "recognition": {
@@ -570,6 +558,424 @@
         "x": 10182,
         "y": 867
       }
+    },
+    "next": [
+      "homeConfirm_check1"
+    ]
+  },
+  "hunt_clearFail": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "focus": {
+      "start": [
+        "[color:red]讨伐：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。[/color]"
+      ],
+      "succeeded": [
+        "[color:red]讨伐：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。[/color]"
+      ],
+      "toast": [
+        "讨伐失败",
+        "讨伐：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。"
+      ],
+      "aborted": true,
+      "Node.Action.Starting": "[color:red]讨伐：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。[/color]"
     }
+  },
+  "hunt_exit1": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 1000,
+    "next": [
+      {
+        "name": "hunt_timeoutCheck",
+        "jump_back": true
+      }
+    ]
+  },
+  "hunt_nextRetry1": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit2",
+      "hunt_nextRetry2",
+      "hunt_nextRetry2Ocr"
+    ]
+  },
+  "hunt_nextRetry1Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit2",
+      "hunt_nextRetry2",
+      "hunt_nextRetry2Ocr"
+    ]
+  },
+  "hunt_exit2": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 1000,
+    "next": [
+      {
+        "name": "hunt_timeoutCheck",
+        "jump_back": true
+      }
+    ]
+  },
+  "hunt_nextRetry2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit3",
+      "hunt_nextRetry3",
+      "hunt_nextRetry3Ocr"
+    ]
+  },
+  "hunt_nextRetry2Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit3",
+      "hunt_nextRetry3",
+      "hunt_nextRetry3Ocr"
+    ]
+  },
+  "hunt_exit3": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 1000,
+    "next": [
+      {
+        "name": "hunt_timeoutCheck",
+        "jump_back": true
+      }
+    ]
+  },
+  "hunt_nextRetry3": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit4",
+      "hunt_nextRetry4",
+      "hunt_nextRetry4Ocr"
+    ]
+  },
+  "hunt_nextRetry3Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit4",
+      "hunt_nextRetry4",
+      "hunt_nextRetry4Ocr"
+    ]
+  },
+  "hunt_exit4": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 1000,
+    "next": [
+      {
+        "name": "hunt_timeoutCheck",
+        "jump_back": true
+      }
+    ]
+  },
+  "hunt_nextRetry4": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit5",
+      "hunt_nextRetry5",
+      "hunt_nextRetry5Ocr"
+    ]
+  },
+  "hunt_nextRetry4Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit5",
+      "hunt_nextRetry5",
+      "hunt_nextRetry5Ocr"
+    ]
+  },
+  "hunt_exit5": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 1000,
+    "next": [
+      {
+        "name": "hunt_timeoutCheck",
+        "jump_back": true
+      }
+    ]
+  },
+  "hunt_nextRetry5": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "下一步.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit6"
+    ],
+    "on_error": [
+      "hunt_clearFail"
+    ]
+  },
+  "hunt_nextRetry5Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "hunt_exit6"
+    ],
+    "on_error": [
+      "hunt_clearFail"
+    ]
+  },
+  "hunt_exit6": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 1000,
+    "next": [
+      {
+        "name": "hunt_timeoutCheck",
+        "jump_back": true
+      }
+    ]
   }
 }

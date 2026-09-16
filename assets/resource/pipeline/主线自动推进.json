@@ -1,0 +1,1799 @@
+{
+  "$__mpe_config_主线自动推进": {
+    "$__mpe_code": {
+      "prefix": "",
+      "filename": "主线自动推进",
+      "version": "v0.16.0"
+    }
+  },
+  "main_guanQiaClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "关卡"
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "repeat": 2,
+    "timeout": 3000,
+    "focus": {
+      "Node.Recognition.Failed": "请返回主界面"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 1800,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_storyEntryClick"
+    ]
+  },
+  "main_storyEntryClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "剧情"
+        ],
+        "roi": [
+          30,
+          152,
+          395,
+          223
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 1000,
+    "timeout": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 2100,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_mapTimeout"
+    ],
+    "on_error": [
+      "main_storyEntryClickFallback"
+    ],
+    "pre_delay": 1000
+  },
+  "main_storyEntryClickFallback": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          80,
+          202,
+          295,
+          123
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 1000,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 2400,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_mapTimeout"
+    ],
+    "pre_delay": 1000
+  },
+  "main_mapTimeout": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 8000,
+    "$__mpe_code": {
+      "position": {
+        "x": 2700,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_bottomAlertSeek"
+    ],
+    "on_error": [
+      "main_home"
+    ]
+  },
+  "main_bottomAlertSeek": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "主线自动推进/金色感叹号_底部.png"
+        ],
+        "roi": [
+          85,
+          524,
+          814,
+          196
+        ],
+        "order_by": "Score",
+        "index": 0
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "rate_limit": 1000,
+    "post_wait_freezes": 1000,
+    "post_delay": 800,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 3000,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_topAlertSeek"
+    ],
+    "on_error": [
+      "main_topAlertSeek"
+    ],
+    "pre_delay": 500
+  },
+  "main_topAlertSeek": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "主线自动推进/金色感叹号_顶部.png"
+        ],
+        "roi": [
+          46,
+          28,
+          853,
+          662
+        ],
+        "order_by": "Score",
+        "index": 0
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target_offset": [
+          -20,
+          22,
+          0,
+          0
+        ]
+      }
+    },
+    "rate_limit": 1500,
+    "post_wait_freezes": 1000,
+    "post_delay": 1000,
+    "timeout": 8000,
+    "$__mpe_code": {
+      "position": {
+        "x": 3300,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_afterAlertClick"
+    ],
+    "on_error": [
+      "main_topAlertClickRetry1"
+    ],
+    "pre_delay": 500
+  },
+  "main_topAlertClickRetry1": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "主线自动推进/金色感叹号_顶部.png"
+        ],
+        "roi": [
+          46,
+          28,
+          853,
+          662
+        ],
+        "order_by": "Score",
+        "index": 0
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target_offset": [
+          -20,
+          22,
+          0,
+          0
+        ]
+      }
+    },
+    "rate_limit": 1500,
+    "post_wait_freezes": 800,
+    "post_delay": 800,
+    "timeout": 6000,
+    "pre_delay": 1500,
+    "focus": {
+      "Node.Action.Succeeded": "[color:orange]主线自动推进：出击卡片未弹出，第1次重新点击金色感叹号[/color]"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 3300,
+        "y": 900
+      }
+    },
+    "next": [
+      "main_afterAlertClick"
+    ],
+    "on_error": [
+      "main_topAlertClickRetry2"
+    ]
+  },
+  "main_topAlertClickRetry2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "主线自动推进/金色感叹号_顶部.png"
+        ],
+        "roi": [
+          46,
+          28,
+          853,
+          662
+        ],
+        "order_by": "Score",
+        "index": 0
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target_offset": [
+          -20,
+          22,
+          0,
+          0
+        ]
+      }
+    },
+    "rate_limit": 1500,
+    "post_wait_freezes": 800,
+    "post_delay": 800,
+    "timeout": 6000,
+    "pre_delay": 2000,
+    "focus": {
+      "Node.Action.Succeeded": "[color:orange]主线自动推进：出击卡片未弹出，第2次重新点击金色感叹号[/color]"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 3300,
+        "y": 1050
+      }
+    },
+    "next": [
+      "main_afterAlertClick"
+    ],
+    "on_error": [
+      "main_topAlertClickRetry3"
+    ]
+  },
+  "main_topAlertClickRetry3": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "主线自动推进/金色感叹号_顶部.png"
+        ],
+        "roi": [
+          46,
+          28,
+          853,
+          662
+        ],
+        "order_by": "Score",
+        "index": 0
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target_offset": [
+          -20,
+          22,
+          0,
+          0
+        ]
+      }
+    },
+    "rate_limit": 1500,
+    "post_wait_freezes": 800,
+    "post_delay": 800,
+    "timeout": 8000,
+    "pre_delay": 2500,
+    "focus": {
+      "Node.Action.Succeeded": "[color:orange]主线自动推进：出击卡片未弹出，第3次（最后一次）重新点击金色感叹号[/color]"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 3300,
+        "y": 1200
+      }
+    },
+    "next": [
+      "main_afterAlertClick"
+    ],
+    "on_error": [
+      "main_done"
+    ]
+  },
+  "main_done": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "focus": {
+      "start": [
+        "[color:green]主线自动推进：未检测到可挑战关卡（金色感叹号），任务结束[/color]"
+      ],
+      "succeeded": [
+        "[color:green]主线自动推进：已推进至当前可用关卡上限[/color]"
+      ],
+      "toast": [
+        "主线自动推进完成",
+        "未在关卡地图中检测到金色感叹号，主线已推进至当前上限。"
+      ]
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 3600,
+        "y": 700
+      }
+    }
+  },
+  "main_afterAlertClick": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 400,
+    "post_delay": 200,
+    "timeout": 3500,
+    "$__mpe_code": {
+      "position": {
+        "x": 3750,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_topSkip",
+      "main_sortieClick",
+      "main_sortieOcr"
+    ],
+    "on_error": [
+      "main_sortieClick"
+    ]
+  },
+  "main_sortieClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/出击.png"
+        ],
+        "roi": [
+          633,
+          497,
+          154,
+          146
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 1000,
+    "timeout": 5000,
+    "rate_limit": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 3900,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_afterSortie"
+    ],
+    "on_error": [
+      "main_sortieOcr"
+    ],
+    "pre_delay": 1000
+  },
+  "main_sortieOcr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "出击"
+        ],
+        "roi": [
+          409,
+          258,
+          490,
+          462
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 1000,
+    "timeout": 5000,
+    "rate_limit": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 4200,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_afterSortie"
+    ],
+    "on_error": [
+      "main_home"
+    ],
+    "pre_delay": 1000
+  },
+  "main_afterSortie": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "pre_delay": 500,
+    "post_wait_freezes": 500,
+    "post_delay": 500,
+    "timeout": 4000,
+    "$__mpe_code": {
+      "position": {
+        "x": 4500,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_guardCannotSortie",
+      "main_phaseHub"
+    ],
+    "on_error": [
+      "main_phaseHub"
+    ]
+  },
+  "main_guardCannotSortie": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "无法出战",
+          "护卫",
+          "编队界面"
+        ],
+        "roi": [
+          250,
+          220,
+          400,
+          180
+        ]
+      }
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "timeout": 2000,
+    "pre_delay": 300,
+    "focus": {
+      "Node.Recognition.Succeeded": "[color:red]主线自动推进异常：队伍中有无法出战的护卫[/color]",
+      "start": [
+        "[color:red]主线自动推进异常：有角色无法出击，任务已停止[/color]"
+      ],
+      "succeeded": [
+        "[color:red]主线自动推进异常：有角色无法出击[/color]"
+      ],
+      "toast": [
+        "主线自动推进异常",
+        "队伍中有无法出战的护卫，任务已停止，请手动处理后重试。"
+      ],
+      "aborted": true
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 4520,
+        "y": 700
+      }
+    }
+  },
+  "main_phaseHub": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "post_wait_freezes": 500,
+    "post_delay": 300,
+    "timeout": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 4800,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_levelUpSkip",
+      "main_confirmSkip",
+      "main_confirmSkipOcr",
+      "main_topSkip",
+      "main_bottomSkip",
+      "main_dialogClick",
+      "main_nextStep",
+      "main_topAlertSeek"
+    ],
+    "on_error": [
+      "main_battleWait"
+    ]
+  },
+  "main_levelUpSkip": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "信仰等级",
+          "信仰",
+          "等级"
+        ],
+        "roi": [
+          365,
+          153,
+          173,
+          128
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          300,
+          650,
+          300,
+          50
+        ]
+      }
+    },
+    "pre_delay": 500,
+    "post_wait_freezes": 800,
+    "post_delay": 800,
+    "timeout": 2000,
+    "rate_limit": 1200,
+    "focus": {
+      "Node.Recognition.Succeeded": "[color:orange]主线自动推进：检测到信仰等级提升，已自动点击继续[/color]"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 4950,
+        "y": 900
+      }
+    },
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_battleWait": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 5100,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_levelUpSkip",
+      "main_confirmSkip",
+      "main_dialogClick",
+      "main_bottomSkipContinue",
+      "main_confirmSkipOcr",
+      "main_topSkip",
+      "main_bottomSkip",
+      "main_nextStepOcr"
+    ],
+    "on_error": [
+      "main_phaseHub"
+    ],
+    "post_delay": 500,
+    "post_wait_freezes": 1000
+  },
+  "main_topSkip": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/快进.png"
+        ],
+        "roi": [
+          780,
+          0,
+          119,
+          100
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 2000,
+    "$__mpe_code": {
+      "position": {
+        "x": 5400,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_confirmSkip",
+      "main_phaseHub"
+    ],
+    "pre_delay": 1000
+  },
+  "main_confirmSkip": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/确认.png"
+        ],
+        "roi": [
+          494,
+          361,
+          405,
+          359
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 3000,
+    "$__mpe_code": {
+      "position": {
+        "x": 5700,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_phaseHub"
+    ],
+    "pre_delay": 1000
+  },
+  "main_confirmSkipOcr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "确认"
+        ],
+        "roi": [
+          494,
+          361,
+          405,
+          359
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 2000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6000,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_phaseHub"
+    ],
+    "pre_delay": 1000
+  },
+  "main_dialogClick": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/对话框.png"
+        ],
+        "roi": [
+          500,
+          80,
+          399,
+          540
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target_offset": [
+          20,
+          0,
+          100,
+          0
+        ]
+      }
+    },
+    "pre_delay": 1000,
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 2000,
+    "rate_limit": 1500,
+    "$__mpe_code": {
+      "position": {
+        "x": 6300,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_preBattleHub"
+    ]
+  },
+  "main_preBattleHub": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "pre_delay": 500,
+    "post_wait_freezes": 500,
+    "post_delay": 300,
+    "timeout": 4000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6350,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_levelUpSkip",
+      "main_dialogClick",
+      "main_bottomSkipContinue",
+      "main_nextStep"
+    ],
+    "on_error": [
+      "main_battleWait"
+    ]
+  },
+  "main_bottomSkipContinue": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/快进.png"
+        ],
+        "roi": [
+          770,
+          554,
+          129,
+          126
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 1000,
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 2000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6450,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_preBattleHub"
+    ]
+  },
+  "main_bottomSkip": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/快进.png"
+        ],
+        "roi": [
+          770,
+          554,
+          129,
+          126
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 2000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6400,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_preBattleHub"
+    ],
+    "pre_delay": 1000
+  },
+  "main_nextStep": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/下一步.png"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "rate_limit": 5000,
+    "timeout": 10000,
+    "$__mpe_code": {
+      "position": {
+        "x": 6700,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_exit1",
+      "main_nextRetry1"
+    ],
+    "pre_delay": 1000,
+    "post_delay": 1500
+  },
+  "main_nextStepOcr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一",
+          "下"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "rate_limit": 5000,
+    "timeout": 10000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7000,
+        "y": 700
+      }
+    },
+    "next": [
+      "main_exit1",
+      "main_nextRetry1"
+    ],
+    "pre_delay": 1000,
+    "post_delay": 1500
+  },
+  "main_home": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "home.png"
+        ],
+        "roi": [
+          817,
+          12,
+          68,
+          52
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "timeout": 5000,
+    "$__mpe_code": {
+      "position": {
+        "x": 7900,
+        "y": 700
+      }
+    },
+    "next": [
+      "homeConfirm_check1"
+    ],
+    "on_error": [
+      "main_homeFallback"
+    ],
+    "pre_delay": 1000
+  },
+  "main_homeFallback": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          831,
+          7,
+          48,
+          33
+        ]
+      }
+    },
+    "post_wait_freezes": 1000,
+    "post_delay": 500,
+    "$__mpe_code": {
+      "position": {
+        "x": 8200,
+        "y": 700
+      }
+    },
+    "next": [
+      "homeConfirm_check1"
+    ],
+    "pre_delay": 1000
+  },
+  "main_clearFail": {
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "StopTask",
+      "param": {}
+    },
+    "focus": {
+      "start": [
+        "[color:red]主线自动推进：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。[/color]"
+      ],
+      "succeeded": [
+        "[color:red]主线自动推进：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。[/color]"
+      ],
+      "toast": [
+        "主线自动推进失败",
+        "主线自动推进：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。"
+      ],
+      "aborted": true,
+      "Node.Action.Starting": "[color:red]主线自动推进：多次点击「下一步」后仍找不到「退出」。\n已停止任务，请手动处理后重试。[/color]"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 8500,
+        "y": 700
+      }
+    }
+  },
+  "main_exit1": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/退出.png"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 700,
+    "on_error": [
+      "main_exit1Ocr"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_exit1Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 600,
+    "on_error": [
+      "main_nextRetry1"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_nextRetry1": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/下一步.png"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit2"
+    ],
+    "on_error": [
+      "main_nextRetry1Ocr"
+    ]
+  },
+  "main_nextRetry1Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit2"
+    ],
+    "on_error": [
+      "main_nextStepSafetyAlertSeek"
+    ]
+  },
+  "main_nextStepSafetyAlertSeek": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "主线自动推进/金色感叹号_顶部.png"
+        ],
+        "roi": [
+          46,
+          28,
+          853,
+          662
+        ],
+        "order_by": "Score",
+        "index": 0
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target_offset": [
+          -20,
+          22,
+          0,
+          0
+        ]
+      }
+    },
+    "rate_limit": 1500,
+    "post_wait_freezes": 1000,
+    "post_delay": 1000,
+    "timeout": 10000,
+    "pre_delay": 2000,
+    "focus": {
+      "Node.Recognition.Succeeded": "[color:orange]主线自动推进：多次未找到「下一步」，已作为安全保险重新搜索金色感叹号[/color]"
+    },
+    "$__mpe_code": {
+      "position": {
+        "x": 6850,
+        "y": 900
+      }
+    },
+    "next": [
+      "main_afterAlertClick"
+    ],
+    "on_error": [
+      "main_clearFail"
+    ]
+  },
+  "main_exit2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/退出.png"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 700,
+    "on_error": [
+      "main_exit2Ocr"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_exit2Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 600,
+    "on_error": [
+      "main_nextRetry2"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_nextRetry2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/下一步.png"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit3"
+    ],
+    "on_error": [
+      "main_nextRetry2Ocr"
+    ]
+  },
+  "main_nextRetry2Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit3"
+    ],
+    "on_error": [
+      "main_clearFail"
+    ]
+  },
+  "main_exit3": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/退出.png"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 700,
+    "on_error": [
+      "main_exit3Ocr"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_exit3Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 600,
+    "on_error": [
+      "main_nextRetry3"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_nextRetry3": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/下一步.png"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit4"
+    ],
+    "on_error": [
+      "main_nextRetry3Ocr"
+    ]
+  },
+  "main_nextRetry3Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit4"
+    ],
+    "on_error": [
+      "main_clearFail"
+    ]
+  },
+  "main_exit4": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/退出.png"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 700,
+    "on_error": [
+      "main_exit4Ocr"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_exit4Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 600,
+    "on_error": [
+      "main_nextRetry4"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_nextRetry4": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/下一步.png"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit5"
+    ],
+    "on_error": [
+      "main_nextRetry4Ocr"
+    ]
+  },
+  "main_nextRetry4Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit5"
+    ],
+    "on_error": [
+      "main_clearFail"
+    ]
+  },
+  "main_exit5": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/退出.png"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 700,
+    "on_error": [
+      "main_exit5Ocr"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_exit5Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 600,
+    "on_error": [
+      "main_nextRetry5"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_nextRetry5": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/下一步.png"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit6"
+    ],
+    "on_error": [
+      "main_nextRetry5Ocr"
+    ]
+  },
+  "main_nextRetry5Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "下一步",
+          "下一"
+        ],
+        "roi": [
+          591,
+          543,
+          308,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 300,
+    "post_wait_freezes": 400,
+    "post_delay": 400,
+    "timeout": 1000,
+    "rate_limit": 800,
+    "next": [
+      "main_exit6"
+    ],
+    "on_error": [
+      "main_clearFail"
+    ]
+  },
+  "main_exit6": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "每日活动本/退出.png"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 400,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 700,
+    "on_error": [
+      "main_exit6Ocr"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  },
+  "main_exit6Ocr": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "退出"
+        ],
+        "roi": [
+          607,
+          547,
+          292,
+          173
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {}
+    },
+    "pre_delay": 200,
+    "post_wait_freezes": 800,
+    "post_delay": 400,
+    "timeout": 600,
+    "on_error": [
+      "main_clearFail"
+    ],
+    "next": [
+      "main_phaseHub"
+    ]
+  }
+}

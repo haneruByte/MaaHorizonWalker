@@ -1,117 +1,102 @@
-<!-- markdownlint-disable MD033 MD041 -->
-<p align="center">
-  <img alt="LOGO" src="https://cdn.jsdelivr.net/gh/MaaAssistantArknights/design@main/logo/maa-logo_512x512.png" width="256" height="256" />
-</p>
+# MaaHorizonWalker - 地平线行者自动化助手
 
-<div align="center">
+MaaHorizonWalker 是基于 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 的、适用于游戏《地平线行者》的自动化工具。界面使用 [MFAAvalonia](https://github.com/MaaXYZ/MFAAvalonia)。
 
-# MaaPracticeBoilerplate
+仓库地址：[haneruByte/MaaHorizonWalker](https://github.com/haneruByte/MaaHorizonWalker)
 
-</div>
+当前版本：**v0.1.0**（首次面向用户公开）
 
-本仓库为 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 所提供的项目模板，开发者可基于此模板直接创建自己的 MaaXXX 项目。
+## 一、免责声明
 
-> **MaaFramework** 是基于图像识别技术、运用 [MAA](https://github.com/MaaAssistantArknights/MaaAssistantArknights) 开发经验去芜存菁、完全重写的新一代自动化黑盒测试框架。
-> 低代码的同时仍拥有高扩展性，旨在打造一款丰富、领先、且实用的开源库，助力开发者轻松编写出更好的黑盒测试程序，并推广普及。
+- 本项目为个人兴趣开发的第三方工具，与游戏官方无任何关联
+- 仅供学习与研究使用；使用本工具可能违反游戏用户协议或相关规则
+- 因使用本工具导致的账号封禁、数据异常、进度丢失或任何其他后果，均由使用者自行承担
+- 作者不对任何直接或间接损失负责
 
-## 即刻开始
+## 二、如何使用
 
-- [📄 快速开始](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md)
-- [🎞️ 视频教程](https://www.bilibili.com/video/BV1yr421E7MW)
+### 2.1 环境要求
 
-## 如何开发
+- Windows，推荐 [MuMu 模拟器](https://mumu.163.com/)
+- 模拟器分辨率：**2208 × 1768**
+- 控制器：**Android / Adb**（MFA 连上模拟器即可）
+- 若提示缺少运行库，安装 [vc_redist](https://aka.ms/vs/17/release/vc_redist.x64.exe)
 
-0. 使用右上角 `Use this template` - `Create a new repository` 来基于本模板创建您自己的项目。
+### 2.2 快速上手
 
-1. 克隆本项目（地址请修改为您基于本模板创建的新项目地址）。
+1. 从 [Releases](https://github.com/haneruByte/MaaHorizonWalker/releases) 下载对应系统的压缩包并解压  
+   Windows 一般选 `MaaHorizonWalker-win-x64`
+2. 先打开模拟器，再运行解压目录下的 `MFAAvalonia.exe`
+3. 控制器选择 **Android / Adb**，确认已识别到模拟器
+4. 按需勾选任务、设置选项后开始运行
 
-    ```bash
-    git clone https://github.com/MaaXYZ/MaaPracticeBoilerplate.git
-    ```
+请先进入游戏主界面后再执行任务。
 
-2. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)，解压到 `deps` 文件夹中。
+任务按列表从上到下依次执行。默认顺序：收菜 → 讨伐 → 裂缝探索 → 愿望 → 每日活动本 → 商店 → 活动日常任务 → 日常任务 → 收件箱（主线自动推进默认不勾选）。
 
-3. 下载 OCR（文字识别）资源文件 [ppocr_v5.zip](https://download.maafw.xyz/MaaCommonAssets/OCR/ppocr_v5/ppocr_v5-zh_cn.zip) 解压到 `assets/resource/model/ocr/` 目录下，确保路径如下：
+### 2.3 功能说明
 
-    ```tree
-    assets/resource/model/ocr/
-    ├── det.onnx
-    ├── keys.txt
-    └── rec.onnx
-    ```
+#### 进入游戏
 
-    _请注意，您不需要将 OCR 资源文件上传到您的代码仓库中。`.gitignore` 已经忽略了 `assets/resource/model/ocr/` 目录，且 GitHub workflow 在发布版本时会自动配置这些资源文件。_
+唤起游戏、点继续、关闭公告。模拟器已开并连上 ADB 即可，游戏本身不用预先打开。已在主界面时会直接结束。
 
-4. 进行开发工作，按您的业务需求修改 `assets` 中的资源文件，请参考 [MaaFramework 相关文档](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md#%E8%B5%84%E6%BA%90%E5%87%86%E5%A4%87)。
+#### 收菜
 
-5. 完成开发后，上传您的代码并发布版本。
+从主界面进入并领取可收取的资源。请从主界面开始。
 
-    ```bash
-    # 配置 git 信息（仅第一次需要，后续不用再配置）
-    git config user.name "您的 GitHub 昵称"
-    git config user.email "您的 GitHub 邮箱"
-    
-    # 提交修改
-    git add .
-    git commit -m "XX 新功能"
-    git push origin HEAD -u
-    ```
+#### 讨伐
 
-6. 发布您的版本
+自动进入讨伐并挑战所选目标。可在选项里指定讨伐目标，默认 **优菲特尔**。
 
-    需要**先**修改仓库设置 `Settings` - `Actions` - `General` - `Read and write permissions` - `Save`
+可选目标：织遍千里的织布机、游荡世间的微风、启示录四骑士、七瓣花骑士、永恒之战、灿烂大地的触碰、亡灵的宴会、协调、优菲特尔、罪孽清算、小丑面具、黎明的庇佑、生命的链接。
 
-    ```bash
-    # CI 检测到 tag 会自动进行发版
-    git tag v1.0.0
-    git push origin v1.0.0
-    ```
+#### 裂缝探索
 
-7. 更多操作，请参考 [个性化配置](./docs/zh_cn/个性化配置.md)（可选）
+自动进入裂缝探索（周常）。可在选项里指定层数 **8F–15F**，默认 **8F**。
 
-## 生态共建
+#### 商店
 
-MAA 正计划建设为一类项目，而非舟的单一软件。
+自动购买每日商店物品。每项可单独开/关：
 
-若您的项目依赖于 MaaFramework，我们欢迎您将它命名为 MaaXXX, MXA, MAX 等等。当然，这是许可而不是限制，您也可以自由选择其他与 MAA 无关的名字，完全取决于您自己的想法！
+- 购买礼物
+- 购买 B 级契约券
+- 购买 A 级契约券
+- 购买 S 级契约券
 
-同时，我们也非常欢迎您提出 PR，在 [社区项目列表](https://github.com/MaaXYZ/MaaFramework#%E7%A4%BE%E5%8C%BA%E9%A1%B9%E7%9B%AE) 中添加上您的项目！
+#### 日常任务
 
-## FAQ
+领取并处理日常任务列表。
 
-### 0. 我是第一次使用 git，这是什么？视频演示中那个黑框框命令行哪来的？
+#### 每日活动本
 
-黑框框是 git bash，几乎任何现代软件的开发都离不开 git，建议先参考 [菜鸟教程](https://www.runoob.com/git/git-install-setup.html) 或搜索一些视频，学习完 git 后再来进行后续开发工作。
+进入每日活动本：签到、跳过剧情、处理战前对话、战斗结算，以及无法出击时的提示。
 
-### 1. 我是第一次使用 Python，在命令行输入 `python ./configure.py` 或 `python -m pip install MaaFW` 之后没有反应？没有报错，也没有提示成功，什么都没有
+#### 主线自动推进
 
-Win10 或者 Win11 系统自带了一份 "Python"，但它其实只是一个安装器，是没法用的。  
-你需要做的是关闭它或者删除它的环境变量，然后自己去 Python 官网下载并安装一份 Python。  
-[参考方法](https://www.bilibili.com/read/cv24692025/)
+自动推进主线关卡。过程较长，请保证体力与编队可用。遇到无法处理的弹窗或新图时可能停下，把日志和截图发到 Issue 或群里即可。
 
-### 2. 使用 MaaDebugger 或 MaaPicli 时弹窗报错，应用程序错误：应用程序无法正常启动
+#### 愿望
 
-![缺少运行库](https://github.com/user-attachments/assets/942df84b-f47d-4bb5-98b5-ab5d44bc7c2a)
+自动完成愿望相关流程。可在选项里指定目标，默认 **光辉币**。也可选护卫经验值、武器经验值。
 
-一般是电脑缺少某些运行库，请安装一下 [vc_redist](https://aka.ms/vs/17/release/vc_redist.x64.exe) 。
+#### 活动日常任务
 
-### 3. 我在这个仓库里提了 Issue 很久没人回复
+处理当期活动页面中的日常任务。活动改版后界面若变化，可能需要更新资源。
 
-这里是《项目模板》仓库，它仅仅是一个模板，一般很少会修改，开发者也较少关注。  
-在此仓库请仅提问模板相关问题，其他问题最好前往对应的仓库提出，如果有 log，最好也带上它（`debug/maa.log` 文件）
+#### 收件箱
 
-- MaaFW 本身及 MaaPiCli 的问题：[MaaFramework/issues](https://github.com/MaaXYZ/MaaFramework/issues)
-- MaaDebugger 的问题：[MaaDebugger/issues](https://github.com/MaaXYZ/MaaDebugger/issues)
-- 不知道算是哪里的、其他疑问等：[讨论区](https://github.com/MaaXYZ/MaaFramework/discussions)
+进入邮箱并一键领取。
 
-### 4. OCR 文字识别一直没有识别结果，报错 "Failed to load det or rec", "ocrer_ is null"
+## 三、反馈与贡献
 
-**请仔细阅读文档**，你无视了前面步骤的报错。我不想解释了，请再把本文档仔细阅读一遍！
+- [提交 Issue](https://github.com/haneruByte/MaaHorizonWalker/issues)
+- QQ 交流群：`1076630349`
 
-## 鸣谢
+反馈时请尽量附上 `debug/maa.log`。若任务卡住，再附上对应时间附近的截图。
+
+## 四、致谢
 
 本项目由 **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)** 强力驱动！
 
-感谢以下开发者对本项目作出的贡献（下面链接改成你自己的项目地址）:
-
-[![Contributors](https://contrib.rocks/image?repo=MaaXYZ/MaaFramework&max=1000)](https://github.com/MaaXYZ/MaaFramework/graphs/contributors)
+1. [MaaFramework](https://github.com/MaaXYZ/MaaFramework)
+2. [MFAAvalonia](https://github.com/MaaXYZ/MFAAvalonia)

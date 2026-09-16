@@ -11,7 +11,71 @@
       "version": "v0.14.2"
     }
   },
+  "enter_bootHub": {
+    "doc": "轮询启动：已在主界面则结束；否则处理登录/公告；都没有再 StartApp。模拟器需已开并连上 ADB，游戏不必预先打开。",
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 180000,
+    "rate_limit": 3000,
+    "pre_delay": 500,
+    "next": [
+      "enter_homeReady",
+      "enter_startGame",
+      "enter_checkNotice",
+      "enter_getAll",
+      "enter_noticeClose",
+      "[JumpBack]enter_startApp"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 1900,
+        "y": 450
+      }
+    }
+  },
+  "enter_homeReady": {
+    "doc": "已在主界面（与 homeGate 同一「关卡」ROI），结束进入游戏。",
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "关卡"
+        ],
+        "roi": [
+          640,
+          300,
+          220,
+          120
+        ]
+      }
+    },
+    "action": {
+      "type": "DoNothing",
+      "param": {}
+    },
+    "timeout": 1200,
+    "pre_delay": 100,
+    "focus": {
+      "Node.Action.Starting": "已进入游戏主界面"
+    },
+    "next": [
+      "enter_end"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 2300,
+        "y": 250
+      }
+    }
+  },
   "enter_startGame": {
+    "doc": "标题/登录：点击屏幕继续",
     "recognition": {
       "type": "OCR",
       "param": {
@@ -36,7 +100,7 @@
       }
     },
     "next": [
-      "enter_checkNotice"
+      "[JumpBack]enter_bootHub"
     ]
   },
   "enter_noticeClose": {
@@ -62,13 +126,7 @@
       }
     },
     "next": [
-      "enter_getAll"
-    ],
-    "on_error": [
-      {
-        "name": "enter_end",
-        "jump_back": true
-      }
+      "[JumpBack]enter_bootHub"
     ]
   },
   "enter_getAll": {
@@ -97,61 +155,7 @@
       }
     },
     "next": [
-      "enter_clickToContinue"
-    ]
-  },
-  "enter_clickToContinue": {
-    "recognition": {
-      "type": "OCR",
-      "param": {
-        "expected": [
-          "点击屏幕继续"
-        ]
-      }
-    },
-    "action": {
-      "type": "LongPress",
-      "param": {}
-    },
-    "rate_limit": 1000,
-    "post_wait_freezes": {
-      "time": 5000,
-      "threshold": 0.99
-    },
-    "$__mpe_code": {
-      "position": {
-        "x": 3807,
-        "y": 427
-      }
-    },
-    "next": [
-      "enter_close"
-    ]
-  },
-  "enter_close": {
-    "recognition": {
-      "type": "DirectHit",
-      "param": {}
-    },
-    "action": {
-      "type": "LongPress",
-      "param": {
-        "target": [
-          802,
-          180,
-          8,
-          11
-        ]
-      }
-    },
-    "$__mpe_code": {
-      "position": {
-        "x": 4105,
-        "y": 413
-      }
-    },
-    "next": [
-      "enter_end"
+      "[JumpBack]enter_bootHub"
     ]
   },
   "enter_checkNotice": {
@@ -175,6 +179,9 @@
     },
     "next": [
       "enter_noticeClose"
+    ],
+    "on_error": [
+      "[JumpBack]enter_bootHub"
     ]
   },
   "enter_end": {
@@ -194,6 +201,7 @@
     }
   },
   "enter_startApp": {
+    "doc": "ADB StartApp：从桌面唤起游戏。先试官包/侧载包名，失败再试 Google Play 包名。",
     "recognition": {
       "type": "DirectHit",
       "param": {}
@@ -201,21 +209,49 @@
     "action": {
       "type": "StartApp",
       "param": {
-        "package": "\"com.GentleManiac.HorizonWalker\""
+        "package": "com.GentleManiac.HorizonWalker"
       }
     },
+    "max_hit": 80,
     "post_wait_freezes": 1000,
-    "post_delay": 500,
+    "post_delay": 4000,
     "rate_limit": 5000,
-    "timeout": 100000,
+    "timeout": 8000,
+    "on_error": [
+      "enter_startAppGoogle"
+    ],
     "$__mpe_code": {
       "position": {
         "x": 2167,
         "y": 457
       }
+    }
+  },
+  "enter_startAppGoogle": {
+    "doc": "Google Play 包名 com.GentleManiac.HorizonWalkerGoogle",
+    "recognition": {
+      "type": "DirectHit",
+      "param": {}
     },
+    "action": {
+      "type": "StartApp",
+      "param": {
+        "package": "com.GentleManiac.HorizonWalkerGoogle"
+      }
+    },
+    "max_hit": 80,
+    "post_wait_freezes": 1000,
+    "post_delay": 4000,
+    "rate_limit": 5000,
+    "timeout": 8000,
     "next": [
-      "enter_startGame"
-    ]
+      "[JumpBack]enter_bootHub"
+    ],
+    "$__mpe_code": {
+      "position": {
+        "x": 2167,
+        "y": 620
+      }
+    }
   }
 }
